@@ -36,14 +36,13 @@
 ### Prerequisites
 There are things you need to use the software and how to install them.
 
-*
-  Download and Install the latest version of [Xampp](https://www.apachefriends.org/download.html)
-*
+*  Download and Install the latest version of [Xampp](https://www.apachefriends.org/download.html)
+
 ### Installation
 
 1. After clocing the product visit
    ```
-     http://localhost/yourapp/install
+     http://localhost/cmscore/install
    ```
 ### Development
 >Running in dev environment
