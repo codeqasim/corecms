@@ -7,7 +7,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
     <title> <?=appname?> | <?php if(isset($title)){ echo $title; } ?></title>
     <meta name="description" content="<?php if(isset($desc)){ echo $desc; } else { echo ""; } ?>">
     <meta name="keywords" content="<?=appname?>">
-    <meta name="theme-color" content="000e4f" />
+    <meta name="theme-color" content="#006cff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="shortcut icon" href="<?=root?>public/assets/img/icon.png">
     <link rel="stylesheet" href="<?=root?>public/assets/css/app.min.css">
