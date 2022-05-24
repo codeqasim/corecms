@@ -6,10 +6,10 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
   <head>
     <title> <?=appname?> | <?php if(isset($title)){ echo $title; } ?></title>
     <meta name="description" content="<?php if(isset($desc)){ echo $desc; } else { echo ""; } ?>">
-    <meta name="keywords" content="<?=appname?> ">
+    <meta name="keywords" content="<?=appname?>">
     <meta name="theme-color" content="000e4f" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-    <link rel="shortcut icon" href="<?=root?>public/assets/img/favicon.png">
+    <link rel="shortcut icon" href="<?=root?>public/assets/img/icon.png">
     <link rel="stylesheet" href="<?=root?>public/assets/css/app.min.css">
 
     <meta property="og:site_name" content="<?=appname?> | <?php if(isset($title)){ echo $title; } ?>"/>
@@ -73,7 +73,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
       <div class="ae af ag">
         <a href="<?=root?>" class="header-logo a8 ah ai" style="display: flex; align-items: center;">
         <img src="<?=root?>public/assets/img/icon.png" alt="logo" class="a8" style="max-width: 40px; height: fit-content;">
-        <p style="font-size: 26px; margin: 0px; padding: 0 14px; font-weight: 600;">odereo</p>
+        <p style="font-size: 20px; margin: 0px; padding: 0 14px; font-family: 'Inter Bold'; text-transform: uppercase;"><strong>odereo</strong></p>
         </a>
       </div>
       <div class="a9 ae ad aa a8">
@@ -84,7 +84,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
           <span class="a0 as[30px] at[2px] au[6px] ah av "></span>
           </button>
           <nav id="navbarCollapse" class="a4 ai lg:aw lg:ae xl:ax ay lg:a3 az ar aA[250px] a8 lg:ag lg:a8 aj aB lg:ah lg:aC lg:aD am">
-            <ul class="aE lg:a9">
+            <ul class="aE lg:a9 mb-0">
               <li class="a0 aF">
                 <a href="<?=root?>" class="menu-scroll aG aH group-hover:aI aJ lg:aK lg:aL lg:aM a9 aN lg:aO active">Home</a>
               </li>
@@ -149,18 +149,20 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
     <div class="a9 a1t ac[-16px]">
       <div class="a8 lg:a1K/12 2xl:a1L/12 ae">
         <div class="a1M">
-          <a href="index.html" class="a1N a1O">
-          <img src="https://saas-tailwind.preview.uideck.com/images/logo/logo.svg" alt="logo" class="ag a1P">
+          <a href="<?=root?>" class="header-logo a8 ah ai" style="display: flex; align-items: center;padding-bottom:5px">
+          <img src="<?=root?>public/assets/img/icon.png" alt="logo" class="a8" style="max-width: 40px; height: fit-content;">
+          <p style="font-size: 20px; margin: 0px; padding: 0 14px; font-family: 'Inter Bold'; text-transform: uppercase;"><strong>odereo</strong></p>
           </a>
-          <p class="aG a1g a1B">
-            © 2025 SaaS Tailwind, Crafted by UIdeck
+          <p class="aG a1g a1B mt-0">
+           &copy; <?=date('Y')?> - All Rights Reserved by <?=appname?>
           </p>
         </div>
       </div>
+
       <div class="a8 md:a1Q/12 lg:a1L/12 2xl:a1L/12 ae">
         <div class="a1M a1R">
           <h3 class="a1B aH a1S a1A">
-            Quick Links
+            <strong>Quick Links</strong>
           </h3>
           <div class="a9 a1t aa">
             <a href="javascript:void(0)" class="aG a1g hover:aI a1B a1T">Contact </a>
@@ -173,7 +175,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
       <div class="a8 md:a1K/12 lg:a1U/12 2xl:aT/12 ae">
         <div class="a1M a1R md:a1V">
           <h3 class="a1B aH a1S a1A">
-            Follow Us
+            <strong>Follow Us</strong>
           </h3>
           <div class="a9 a1t md:a1c aa">
             <a href="javascript:void(0)" class="a1g hover:aI">

@@ -4,7 +4,7 @@
 
 use AppRouter\Router;
 
-define('appname', 'App');
+define('appname', 'ODEREO');
 
 // SESSION STARTED
 session_start();
