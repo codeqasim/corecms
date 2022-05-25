@@ -69,20 +69,6 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
   </head>
   <body onload="document.body.style.opacity='1'" id="body" style="#opacity:1" class="">
 
-  <script>
-
-    // FADEOUT BODY ON CLICK
-    <?php if (isset($_SESSION['user_login'])==true){ } else { ?>
-    var aElems = document.getElementsByTagName('a');
-    for (var i = 0, len = aElems.length; i < len; i++) {
-       aElems[i].onclick = function() {
-          document.body.classList.add("bodyout");
-          };
-      }
-      <?php } ?>
-
-  </script>
-
   <header class="header a3 a4 a5 a6 a7 a8 a9 aa a1j sticky">
   <div class="ab">
     <div class="a9 ac[-16px] aa ad a0">
@@ -256,6 +242,19 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
   </div>
 </footer>
 
+<script>
+
+    // FADEOUT BODY ON CLICK
+    <?php if (isset($_SESSION['user_login'])==true){ } else { ?>
+    var aElems = document.getElementsByTagName('a');
+    for (var i = 0, len = aElems.length; i < len; i++) {
+       aElems[i].onclick = function() {
+          document.body.classList.add("bodyout");
+          };
+      }
+      <?php } ?>
+
+  </script>
 
 <script src="<?=root?>public/assets/js/app.js"></script>
 
