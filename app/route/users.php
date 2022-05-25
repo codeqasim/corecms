@@ -138,14 +138,14 @@ $router->post('signup', function() {
             // print_r($_SESSION);
             // die;
 
-            include "app/vendor/mail.php";
-            $mg->messages()->send($SENDER_DOMAIN, [
-                'from'    => 'ecomistan <postmaster@ecomistan.com>',
-                'to'      => ''.$_POST['first_name'].' <'.$_POST['email'].'>',
-                'subject' => 'Hello '.$_POST['first_name'].'',
-                'template'    => 'signup',
-                'h:X-Mailgun-Variables'    => '{"link": "https://ecomistan.com/accounts/verification/email/'.$mail_code.'/'.$user->id.'"}'
-            ]);
+            // include "app/vendor/mail.php";
+            // $mg->messages()->send($SENDER_DOMAIN, [
+            //     'from'    => 'ecomistan <postmaster@ecomistan.com>',
+            //     'to'      => ''.$_POST['first_name'].' <'.$_POST['email'].'>',
+            //     'subject' => 'Hello '.$_POST['first_name'].'',
+            //     'template'    => 'signup',
+            //     'h:X-Mailgun-Variables'    => '{"link": "https://ecomistan.com/accounts/verification/email/'.$mail_code.'/'.$user->id.'"}'
+            // ]);
 
             // echo "<pre>";
             // print_r($mysqli);
