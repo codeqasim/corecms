@@ -8,15 +8,23 @@
 </h2>
 <form onSubmit="loading();" autocomplete="off" class="box" method="post" action="<?=root?>login">
 
-<label class="filled w100">
+<div class="row">
+<div class="col-12">
+
+<label class="control">
+<span>Email Address</span>
     <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "compoxition@gmail.com"; } ?>">
-    <span>Email Address</span>
 </label>
 
-<label class="filled w100 mb-1">
+</div>
+
+<div class="col-12">
+<label class="control">
+<span>Password</span>
     <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">
-    <span>Password</span>
 </label>
+</div>
+</div>
 
 <div class="row">
 <div class="col-6">
