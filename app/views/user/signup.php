@@ -14,41 +14,41 @@
 <div class="row signup">
 
     <div class="col-6" style="padding-right: 0.3rem;">
-        <label class="filled w100"> 
-        <input required type="text" name="first_name" placeholder=" " value="<?php if ($dev == 1){ echo "Qasim"; } ?>"> 
-        <span>First Name</span> 
+        <label class="filled w100">
+        <input required type="text" name="first_name" placeholder=" " value="<?php if ($dev == 1){ echo "Qasim"; } ?>">
+        <span>First Name</span>
         </label>
     </div>
 
     <div class="col-6" style="padding-left: 0.3rem;">
-        <label class="filled w100"> 
-        <input required type="text" name="last_name" placeholder=" " value="<?php if ($dev == 1){ echo "Hussain"; } ?>"> 
-        <span>Last Name</span> 
+        <label class="filled w100">
+        <input required type="text" name="last_name" placeholder=" " value="<?php if ($dev == 1){ echo "Hussain"; } ?>">
+        <span>Last Name</span>
         </label>
     </div>
 
 </div>
 
-<label class="filled w100"> 
-    <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "info@khudcar.com"; } ?>"> 
-    <span>Email Address</span> 
+<label class="filled w100">
+    <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "info@khudcar.com"; } ?>">
+    <span>Email Address</span>
 </label>
 
 <label class="w100">
-    
-<span style="font-size: 12px; color: #5a6778; position: absolute; padding: 10px 15px; z-index: 1;height: 1px;">Phone Number</span> 
+
+<span style="font-size: 12px; color: #5a6778; position: absolute; padding: 10px 15px; z-index: 1;height: 1px;">Phone Number</span>
 <input required id="phone" name="mobile" type="number" class="w100">
 <!-- <input required data-inputmask="'mask': '99999999999'"  type="text" name="mobile" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">  -->
 </label>
 
-<label class="filled w100 mb-1"> 
-    <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>"> 
-    <span>Password</span> 
+<label class="filled w100 mb-1">
+    <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">
+    <span>Password</span>
 </label>
 
-<label class="filled w100" style="display:none"> 
-    <input type="text" name="nic" placeholder=" " value="<?php if ($dev == 1){ echo "123456789"; } ?>"> 
-    <span>NIC Number</span> 
+<label class="filled w100" style="display:none">
+    <input type="text" name="nic" placeholder=" " value="<?php if ($dev == 1){ echo "123456789"; } ?>">
+    <span>NIC Number</span>
 </label>
 
 <!-- <label class="filled w100">
@@ -56,11 +56,11 @@
 
 <?php if(isset($search_location)){echo $search_location;}?>
 
-<?php 
+<?php
 if (isset($locations)){
 sort ( $locations );
 foreach ($locations as $l){ ?>
-<option value="<?=strtolower($l->id)?>"> <?=$l->city_name?></option>    
+<option value="<?=strtolower($l->id)?>"> <?=$l->city_name?></option>
 <?php }} ?>
 <select>
 <dev class="placeholder">City From</dev>
@@ -99,7 +99,7 @@ var RecaptchaOptions = {
 
 <!-- <script src="<?=root?>assets/js/jquery.inputmask.bundle.js"></script>
 <script>$(":input").inputmask();</script> -->
-      
+
 <style>
     header,footer,.pages_links{display:none}
     body{background:var(--theme-bg)}
@@ -115,7 +115,7 @@ var RecaptchaOptions = {
 
 </style>
 
-<script src="<?=root?>assets/js/tellinput.js"></script>
+<script src="<?=root?>public/assets/js/tellinput.js"></script>
 
   <script>
     var input = document.querySelector("#phone");
@@ -147,14 +147,14 @@ var RecaptchaOptions = {
   </script>
 
 <script>
-    <?php 
+    <?php
     $url = explode('/', $_GET['url']);
     if (end($url) == "failed") { ?>
 
-    vt.error("Please enter correct signup details",{ 
-    title:"Mobile or Email Already Exists", 
-    position: "top-center", 
-    callback: function (){ // 
+    vt.error("Please enter correct signup details",{
+    title:"Mobile or Email Already Exists",
+    position: "top-center",
+    callback: function (){ //
     } })
 
     <?php } ?>

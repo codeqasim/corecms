@@ -11,7 +11,9 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="shortcut icon" href="<?=root?>public/assets/img/icon.png">
     <link rel="stylesheet" href="<?=root?>public/assets/css/app.min.css">
+    <script src="<?=root?>public/assets/js/jquery-3.4.1.min.js"></script>
 
+    <!-- META INFO -->
     <meta property="og:site_name" content="<?=appname?> | <?php if(isset($title)){ echo $title; } ?>"/>
     <meta property="og:url" content="https://www.<?=appname?>.com"/>
     <meta property="og:type" content="website"/>
@@ -20,7 +22,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
     <meta property="og:image" content="<?=root?>assets/img/social.jpg"/>
     <meta property="og:image:secure_url" content="<?=root?>assets/img/social.jpg"/>
 
-    <!-- HomePage Business Schema -->
+    <!-- SEO SCHEMA -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -129,7 +131,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
           <a href="<?=root?>login" class="aG a1f a1g hover:aI a1h a1i a1j">
           Login
           </a>
-          <a style="border-radius:6px" href="<?=root?>singup" class="aG a1k a1l a1m a1h a1n md:a1o lg:a1n xl:a1o hover:a1p a12 a1j a1q a19">
+          <a style="border-radius:6px;color:#fff" href="<?=root?>signup" class="aG a1k a1l a1m a1h a1n md:a1o lg:a1n xl:a1o hover:a1p a12 a1j a1q a19">
           Sign Up
           </a>
         </div>
@@ -138,10 +140,9 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
   </div>
 </header>
 
-<script src="<?=root?>assets/js/toast.js"></script>
+<script src="<?=root?>public/assets/js/toast.js"></script>
 <?php if (isset($account_nav)) { include "accounts/nav.php"; } ?>
 <?php include $view ?>
-
 
 <!-- FOOTER -->
 <footer class="a1I a1J">

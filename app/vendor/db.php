@@ -4,8 +4,8 @@
 include('xcrud/xcrud.php');
 
 $servername = "localhost";
-$database = "";
-$username = "root";
+$database = "data";
+$username = "data";
 $password = "Allah4ever@";
 
 // CREATE CONNECTION
