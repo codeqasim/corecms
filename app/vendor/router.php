@@ -9,19 +9,3 @@ use Mailgun\Mailgun;
 $root=(isset($_SERVER['HTTPS']) ? "https://" : "http://").$_SERVER['HTTP_HOST'];
 $root.= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 define('root', $root);
-
-$router->get('mail', function() {
-
-$to = 'compoxition@gmail.com';
-$subject = 'Marriage Proposal';
-$message = 'Hi Jane, will you marry me?';
-$from = 'info@odereo.com';
-
-// Sending email
-if(mail($to, $subject, $message)){
-    echo 'Your mail has been sent successfully.';
-} else{
-    echo 'Unable to send email. Please try again.';
-}
-
-});

@@ -31,5 +31,22 @@ header("X-Frame-Options: SAMEORIGIN");
 // FUNCTION FOR DEBUG RESPONSES
 function dd($d) { echo "<pre>"; print_r($d); echo "</pre>"; die(); }
 
+$router->get('mail', function() {
+
+    $to = 'compoxition@gmail.com';
+    $subject = 'Marriage Proposal';
+    $message = 'Hi Jane, will you marry me?';
+    $from = 'info@odereo.com';
+
+    // Sending email
+    if(mail($to, $subject, $message)){
+        echo 'Your mail has been sent successfully.';
+    } else{
+        echo 'Unable to send email. Please try again.';
+    }
+
+    });
+    
+
 // DISPATCH ROUTER
 $router->dispatchGlobal();
