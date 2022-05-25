@@ -54,8 +54,15 @@ $router->get('signup(.*)', function() {
     'user/signup');
 });
 
-// ======================== USER SIGNUP
-$router->get('dashboard', function() {
+// ======================== USER LOGIN
+$router->get('account/email_verification', function() {
+    views('Login',
+    '',
+    'user/email_verification');
+});
+
+// ======================== USER DASHBOARD
+$router->get('dashboard(.*)', function() {
 
     views('Dashboard',
     '',
@@ -121,6 +128,12 @@ $router->post('signup', function() {
     if (!isset($_POST["token"]) || !isset($_SESSION["token"])) { echo "invalid token"; exit(); }
     if ($_POST["token"] == $_SESSION["token"]) { echo "worked"; } else { echo "invalid token"; exit(); };
 
+    // echo $_POST["token"];
+    // echo "</br>";
+    // echo $_SESSION["token"];
+    // die;
+
+
     require_once "app/vendor/db.php";
 
         // VALIDATION
@@ -176,7 +189,7 @@ $router->post('signup', function() {
             // echo "<pre>";
             // die;
 
-            die(header("Location: ".root."account/email_verification"));
+            header('Location: '.root.'dashboard/signup');
 
             } else {
 

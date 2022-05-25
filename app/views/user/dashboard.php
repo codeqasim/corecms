@@ -2,7 +2,7 @@
 	<?php include "sidebar.php"; ?>
 	<div class="elements">
 	<!-- <h4 class="alert_title">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>    
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
    Dashboard </h4> -->
 		<div class="">
 
@@ -29,7 +29,7 @@
 
 <div class="row">
 <div class="col-6 tl" style="font-size: 24px;"><p><strong>Orders Today</strong></p></div><div class="col-6 text-right" style="font-size: 24px;color:var(--theme-text)"><strong>0</strong></div><hr>
-<div class="col-6 tl"><p>Total Amount Today</p></div><div class="col-6 text-right" style="color:var(--theme-text)"><strong>Rs. 
+<div class="col-6 tl"><p>Total Amount Today</p></div><div class="col-6 text-right" style="color:var(--theme-text)"><strong>Rs.
     0</strong></div><hr>
 <div class="col-6 tl"><p>Orders This Month</p></div><div class="col-6 text-right"><strong>0</strong></div><hr>
 <div class="col-7 tl"><p>Total Amount This Month</p></div><div class="col-md-5 text-right"><strong>Rs. 0</strong></div>
@@ -42,7 +42,7 @@
 
 
 </div>
-			
+
 			<script src="https://code.highcharts.com/5/js/highcharts.js"></script>
 			<div id="container"></div>
 
@@ -52,7 +52,7 @@
 </div>
 </div>
 
- 
+
 <script>
 	Highcharts.chart('container', {
 
@@ -863,3 +863,30 @@ input.highcharts-range-selector {
   fill: #60606a;
 }
 </style>
+
+<script>
+    <?php
+    $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    if (end($url) == "invalid") { ?>
+
+    vt.error("Please enter correct email and password",{
+    title:"Invalid Login Credentials",
+    position: "bottom-center",
+    callback: function (){ //
+    } })
+
+    <?php } ?>
+
+    <?php
+    $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    if (end($url) == "signup") { ?>
+
+    vt.success("Please check you mailbox to activate your account",{
+    title:"Account Created Successfully.",
+    position: "bottom-center",
+    callback: function (){ //
+    } })
+
+    <?php } ?>
+
+</script>
