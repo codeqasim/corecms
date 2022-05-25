@@ -148,12 +148,13 @@ var RecaptchaOptions = {
 
 <script>
     <?php
-    $url = explode('/', $_GET['url']);
-    if (end($url) == "failed") { ?>
 
+    $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    if (end($url) == "failed") { ?>
+    
     vt.error("Please enter correct signup details",{
     title:"Mobile or Email Already Exists",
-    position: "top-center",
+    position: "bottom-center",
     callback: function (){ //
     } })
 

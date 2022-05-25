@@ -10,7 +10,6 @@ define('appname', 'ODEREO');
 session_start();
 
 // INCLUDE VENDORS
-include "app/vendor/db.php";
 include "app/vendor/router.php";
 include "app/route.php";
 include "app/api.php";

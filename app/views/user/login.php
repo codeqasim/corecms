@@ -8,14 +8,14 @@
 </h2>
 <form onSubmit="loading();" autocomplete="off" class="box" method="post" action="<?=root?>login">
 
-<label class="filled w100"> 
-    <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "compoxition@gmail.com"; } ?>"> 
-    <span>Email Address</span> 
+<label class="filled w100">
+    <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "compoxition@gmail.com"; } ?>">
+    <span>Email Address</span>
 </label>
 
-<label class="filled w100 mb-1"> 
-    <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>"> 
-    <span>Password</span> 
+<label class="filled w100 mb-1">
+    <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">
+    <span>Password</span>
 </label>
 
 <div class="row">
@@ -43,17 +43,30 @@
 </div>
 
 <script>
-    <?php 
-    $url = explode('/', $_GET['url']);
+    <?php
+    $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
     if (end($url) == "invalid") { ?>
 
-    vt.error("Please enter correct email and password",{ 
-    title:"Invalid Login Credentials", 
-    position: "top-center", 
-    callback: function (){ // 
+    vt.error("Please enter correct email and password",{
+    title:"Invalid Login Credentials",
+    position: "bottom-center",
+    callback: function (){ //
     } })
 
     <?php } ?>
+
+    <?php
+    $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    if (end($url) == "logout") { ?>
+
+    vt.success("You have logout your account successfully",{
+    title:"Logout Successfully",
+    position: "bottom-center",
+    callback: function (){ //
+    } })
+
+    <?php } ?>
+
 </script>
 
 <style>

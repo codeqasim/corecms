@@ -127,6 +127,13 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
             </ul>
           </nav>
         </div>
+        <?php if (isset($_SESSION['user_login'])==true){ ?>
+
+          <a style="border-radius:6px;color:#fff" href="<?=root?>logout" class="aG a1k a1l a1m a1h a1n md:a1o lg:a1n xl:a1o hover:a1p a12 a1j a1q a19">
+          Logout
+          </a>
+
+        <?php } else { ?>
         <div class="sm:a9 a1c am a1d lg:a1e">
           <a href="<?=root?>login" class="aG a1f a1g hover:aI a1h a1i a1j">
           Login
@@ -134,6 +141,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
           <a style="border-radius:6px;color:#fff" href="<?=root?>signup" class="aG a1k a1l a1m a1h a1n md:a1o lg:a1n xl:a1o hover:a1p a12 a1j a1q a19">
           Sign Up
           </a>
+          <?php } ?>
         </div>
       </div>
     </div>

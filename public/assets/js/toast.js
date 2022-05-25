@@ -95,11 +95,10 @@
             font-size: 14px;
         }
 
-        @media(max-width: 768px){ 
-            .vt-col { flex: unset; } 
-        } 
+        @media(max-width: 768px){
+            .vt-col { flex: unset; }
+        }
     `
-
     const styleSheet = document.createElement("style")
     styleSheet.innerText = styles.replace((/  |\r\n|\n|\r/gm), "")
     document.head.appendChild(styleSheet)
