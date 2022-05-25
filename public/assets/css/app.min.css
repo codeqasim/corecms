@@ -576,7 +576,7 @@ ol, ul, dl { margin-top: 0; margin-bottom: 1rem; }
 
 .filled>.placeholder { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: block; box-sizing: border-box; padding: 7px 12px 0; color: rgba(var(--pure-material-onsurface-rgb,0,0,0),0.6); font-size: 75%; line-height: 18px; pointer-events: none; transition: color .2s,font-size .2s,line-height .2s; }
 
-.linear{display: inline-block; width: 100%;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0;height:.25em;color:var(--theme-bg);background-color:rgba(var(--theme-fd-rgb,50,50,100),0.12);font-size:16px}
+.linear{display: inline-block; width: 100%;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0;height:.25em;color:var(--theme-primary);background-color:rgba(var(--theme-fd-rgb,50,50,100),0.12);font-size:16px}
 .linear::-webkit-progress-bar{background-color:transparent}
 .linear::-webkit-progress-value{background-color:currentColor;transition:all .2s}
 .linear::-moz-progress-bar{background-color:currentColor;transition:all .2s}
