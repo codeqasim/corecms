@@ -73,10 +73,23 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
   <div class="ab">
     <div class="a9 ac[-16px] aa ad a0">
       <div class="ae af ag">
+
+      <?php if (isset($_SESSION['user_login'])==true){ ?>
+
+        <a href="<?=root?>dashboard" class="header-logo a8 ah ai" style="display: flex; align-items: center;">
+        <img src="<?=root?>public/assets/img/icon.png" alt="logo" class="a8" style="max-width: 40px; height: fit-content;">
+        <p style="font-size: 14px; margin: 0px; padding: 0 14px; font-family: 'Inter Bold'; text-transform: uppercase;"><strong>Dashboard</strong></p>
+        </a>
+
+      <?php } else { ?>
+
         <a href="<?=root?>" class="header-logo a8 ah ai" style="display: flex; align-items: center;">
         <img src="<?=root?>public/assets/img/icon.png" alt="logo" class="a8" style="max-width: 40px; height: fit-content;">
         <p style="font-size: 20px; margin: 0px; padding: 0 14px; font-family: 'Inter Bold'; text-transform: uppercase;"><strong>odereo</strong></p>
         </a>
+
+      <?php } ?>
+
       </div>
       <div class="a9 ae ad aa a8">
         <div>
@@ -86,6 +99,15 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
           <span class="a0 as[30px] at[2px] au[6px] ah av "></span>
           </button>
           <nav id="navbarCollapse" class="a4 ai lg:aw lg:ae xl:ax ay lg:a3 az ar aA[250px] a8 lg:ag lg:a8 aj aB lg:ah lg:aC lg:aD am">
+
+          <?php if (isset($_SESSION['user_login'])==true){ ?>
+            <ul class="aE lg:a9 mb-0">
+              <li class="a0 aF">
+                <a href="<?=root?>" class="menu-scroll aG aH group-hover:aI aJ lg:aK lg:aL lg:aM a9 aN lg:aO active">Home</a>
+              </li>
+          </ul>
+
+            <?php } else { ?>
             <ul class="aE lg:a9 mb-0">
               <li class="a0 aF">
                 <a href="<?=root?>" class="menu-scroll aG aH group-hover:aI aJ lg:aK lg:aL lg:aM a9 aN lg:aO active">Home</a>
@@ -125,6 +147,8 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
                 </div>
               </li>
             </ul>
+            <?php } ?>
+
           </nav>
         </div>
         <?php if (isset($_SESSION['user_login'])==true){ ?>

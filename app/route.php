@@ -45,7 +45,15 @@ $router->get('signup(.*)', function() {
     'user/signup');
 });
 
+// ======================== USER SIGNUP
+$router->get('dashboard', function() {
 
+    views('Dashboard',
+    '',
+    'user/dashboard');
+});
+
+// ======================== LOGIN
 $router->post('login', function() {
 
     require_once "app/vendor/db.php";
