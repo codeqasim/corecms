@@ -4,9 +4,9 @@ class Xcrud_config
 {
 
     // default connection
-    public static $dbname = "ecomistan"; // Your database name
-    public static $dbuser = "root"; // Your database username
-    public static $dbpass = ""; // // Your database password
+    public static $dbname = "data"; // Your database name
+    public static $dbuser = "data"; // Your database username
+    public static $dbpass = "Allah4ever@"; // // Your database password
     public static $dbhost = "localhost"; // Your database host, 'localhost' is default.
 
 

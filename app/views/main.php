@@ -69,12 +69,30 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
   </head>
   <body onload="document.body.style.opacity='1'" id="body" style="#opacity:1" class="">
 
+  <script>
+
+    // FADEOUT BODY ON CLICK
+    <?php if (isset($_SESSION['user_login'])==true){ } else { ?>
+    var aElems = document.getElementsByTagName('a');
+    for (var i = 0, len = aElems.length; i < len; i++) {
+       aElems[i].onclick = function() {
+          document.body.classList.add("bodyout");
+          };
+      }
+      <?php } ?>
+
+  </script>
+
   <header class="header a3 a4 a5 a6 a7 a8 a9 aa a1j sticky">
   <div class="ab">
     <div class="a9 ac[-16px] aa ad a0">
       <div class="ae af ag">
 
       <?php if (isset($_SESSION['user_login'])==true){ ?>
+
+        <style>
+          header .ab { max-width: 100%; }
+        </style>
 
         <a href="<?=root?>dashboard" class="header-logo a8 ah ai" style="display: flex; align-items: center;">
         <img src="<?=root?>public/assets/img/icon.png" alt="logo" class="a8" style="max-width: 40px; height: fit-content;">
@@ -173,7 +191,7 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
 </header>
 
 <script src="<?=root?>public/assets/js/toast.js"></script>
-<?php if (isset($account_nav)) { include "accounts/nav.php"; } ?>
+<?php if (isset($account_nav)) { include "app/views/user/nav.php"; } ?>
 <?php include $view ?>
 
 <!-- FOOTER -->

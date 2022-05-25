@@ -11,7 +11,9 @@ session_start();
 
 // INCLUDE VENDORS
 include "app/vendor/router.php";
-include "app/route.php";
+include "app/route/users.php";
+include "app/route/settings.php";
+include "app/route/products.php";
 include "app/api.php";
 
 // VIEWS FUNCTION

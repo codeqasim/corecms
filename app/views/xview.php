@@ -1,8 +1,8 @@
 <div class="getting_started">
-    <?php include "views/accounts/sidebar.php"; ?>
+    <?php include "app/views/user/sidebar.php"; ?>
     <div class="elements">
-        <h4 class="alert_title  df jcsb">
-        <span class="df aic gap10"> 
+        <h4 class="alert_title df jcsb">
+        <span class="df aic gap10">
         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>   -->
         <?=$title?> </span>
 
@@ -16,13 +16,13 @@
 
         </h4>
 
-        <?php 
+        <?php
         echo $xcrud->render();
         // $xcrud->render('create');
         // $xcrud->render('edit', 1); // edit entry screen, '12' - primary key
         // $xcrud->render('view', 85); // view entry screen, '85' - primary key
         ?>
- 
+
     </div>
 </div>
 
@@ -63,26 +63,26 @@ jQuery(document).on("xcrudafterdepend", function(event, container, data) {
 </script>
 
 <script>
-    <?php 
+    <?php
     $url = explode('/', $_GET['url']);
     if (end($url) == "success") { ?>
 
-    vt.success("Your prouduct has been added successfully",{ 
-    title:"Product Added Successfully", 
-    position: "top-center", 
-    callback: function (){ // 
+    vt.success("Your prouduct has been added successfully",{
+    title:"Product Added Successfully",
+    position: "top-center",
+    callback: function (){ //
     } })
     <?php } ?>
 
-    
-    var hash = window.location.hash.substr(1);  
+
+    var hash = window.location.hash.substr(1);
     if (hash == "success") {
-        vt.success("Your prouduct has been added successfully",{ 
-        title:"Product Added Successfully", 
-        position: "top-center", 
-        callback: function (){ // 
+        vt.success("Your prouduct has been added successfully",{
+        title:"Product Added Successfully",
+        position: "top-center",
+        callback: function (){ //
         } })
-    }      
+    }
     // alert(hash);
 
 
