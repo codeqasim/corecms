@@ -138,6 +138,10 @@ $router->post('signup', function() {
             // print_r($_SESSION);
             // die;
 
+            // $active_url = root."accounts/verification/email/'.$mail_code.'/'.$user->id.'";
+
+            // mail("compoxition@gmail.com","My subject","Your activation link :". $active_url );
+
             // include "app/vendor/mail.php";
             // $mg->messages()->send($SENDER_DOMAIN, [
             //     'from'    => 'ecomistan <postmaster@ecomistan.com>',

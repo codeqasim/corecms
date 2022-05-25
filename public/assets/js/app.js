@@ -204,14 +204,14 @@ checkboxes[i].checked = source.checked;
 }}
 
 //
-$(".filled input, .filled textarea").on("focus blur",function(){
-$(this).parent().toggleClass("fiiled_border");
-});
+// $(".filled input, .filled textarea").on("focus blur",function(){
+// $(this).parent().toggleClass("fiiled_border");
+// });
 
-$("label select").on("focus blur",function(){
-$(this).parent().toggleClass("fiiled_border");
-});
+// $("label select").on("focus blur",function(){
+// $(this).parent().toggleClass("fiiled_border");
+// });
 
-$("label .iti input").on("focus blur",function(){
-$(this).parent().toggleClass("fiiled_border");
-});
+// $("label .iti input").on("focus blur",function(){
+// $(this).parent().toggleClass("fiiled_border");
+// });

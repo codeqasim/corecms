@@ -1,8 +1,8 @@
 <div class="hero df aic jcc h100">
 <div class="container">
 <div class="row">
-<div class="col-2 x-none"></div>
-<div class="col-8 x-w100">
+<div class="col-3 x-none"></div>
+<div class="col-6 x-w100">
 <h2 class="box_heading">
 <a class="brand df jcc aic" href="<?=root?>" style="gap:10px">
 <img src="<?=root?>assets/img/icon.png" alt="" style="max-width:32px">
@@ -13,38 +13,62 @@
 
 <div class="row signup">
 
-    <div class="col-6" style="padding-right: 0.3rem;">
-        <label class="filled w100">
-        <input required type="text" name="first_name" placeholder=" " value="<?php if ($dev == 1){ echo "Qasim"; } ?>">
-        <span>First Name</span>
-        </label>
+    <div class="col-6">
+    <label class="control">
+    <span>First Name</span>
+      <input required type="text" name="first_name" placeholder="Your First Name" value="<?php if ($dev == 1){ echo "Qasim"; } ?>">
+    </label>
     </div>
 
-    <div class="col-6" style="padding-left: 0.3rem;">
-        <label class="filled w100">
-        <input required type="text" name="last_name" placeholder=" " value="<?php if ($dev == 1){ echo "Hussain"; } ?>">
+    <div class="col-6">
+        <label class="control">
         <span>Last Name</span>
+        <input required type="text" name="last_name" placeholder="Your Last Name" value="<?php if ($dev == 1){ echo "Hussain"; } ?>">
         </label>
     </div>
 
 </div>
 
-<label class="filled w100">
-    <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "info@khudcar.com"; } ?>">
+<div class="row">
+<div class="col-6">
+
+<label class="control">
     <span>Email Address</span>
+    <input required type="email" name="email" placeholder="Your Email Address" value="<?php if ($dev == 1){ echo "info@khudcar.com"; } ?>">
 </label>
 
-<label class="w100">
+</div>
 
-<span style="font-size: 12px; color: #5a6778; position: absolute; padding: 10px 15px; z-index: 1;height: 1px;">Phone Number</span>
+<div class="col-6">
+
+<label class="control">
+<span>Phone Number</span>
 <input required id="phone" name="mobile" type="number" class="w100">
 <!-- <input required data-inputmask="'mask': '99999999999'"  type="text" name="mobile" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">  -->
 </label>
 
-<label class="filled w100 mb-1">
+</div>
+
+</div>
+
+
+<div class="row">
+<div class="col-6">
+
+<label class="control">
+<span>Password</span>
     <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">
-    <span>Password</span>
 </label>
+
+</div>
+
+<div class="col-6">
+<div style="margin-top:5px" class="g-recaptcha" data-sitekey="6LdX3JoUAAAAAFCG5tm0MFJaCF3LKxUN4pVusJIF" data-callback="correctCaptcha"></div>
+</div>
+
+</div>
+
+
 
 <label class="filled w100" style="display:none">
     <input type="text" name="nic" placeholder=" " value="<?php if ($dev == 1){ echo "123456789"; } ?>">
@@ -67,7 +91,6 @@ foreach ($locations as $l){ ?>
 <span></span>
 </label> -->
 
-<div class="g-recaptcha" data-sitekey="6LdX3JoUAAAAAFCG5tm0MFJaCF3LKxUN4pVusJIF" data-callback="correctCaptcha"></div>
 
 <button id="button" class="btn btn-success w100 h50" type="submit" disabled="disabled">Signup</button>
 
@@ -151,7 +174,7 @@ var RecaptchaOptions = {
 
     $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
     if (end($url) == "failed") { ?>
-    
+
     vt.error("Please enter correct signup details",{
     title:"Mobile or Email Already Exists",
     position: "bottom-center",
