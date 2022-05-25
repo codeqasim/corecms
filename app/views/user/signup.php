@@ -51,7 +51,6 @@
 
 </div>
 
-
 <div class="row">
 <div class="col-6">
 
@@ -67,8 +66,6 @@
 </div>
 
 </div>
-
-
 
 <label class="filled w100" style="display:none">
     <input type="text" name="nic" placeholder=" " value="<?php if ($dev == 1){ echo "123456789"; } ?>">
@@ -91,6 +88,8 @@ foreach ($locations as $l){ ?>
 <span></span>
 </label> -->
 
+<!-- CRF TOKEN -->
+<input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? '' ?>">
 
 <button id="button" class="btn btn-success w100 h50" type="submit" disabled="disabled">Signup</button>
 

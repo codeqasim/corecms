@@ -31,6 +31,10 @@ $router->get('logout', function() {
 // ======================== USER LOGIN
 $router->get('login(.*)', function() {
 
+    // CREATE CRF TOKEN
+    $_SESSION['token'] = bin2hex(random_bytes(35));
+
+    // AUTH CHECK
     if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
     views('Login',
     '',
@@ -40,6 +44,10 @@ $router->get('login(.*)', function() {
 // ======================== USER SIGNUP
 $router->get('signup(.*)', function() {
 
+    // CREATE CRF TOKEN
+    $_SESSION['token'] = bin2hex(random_bytes(35));
+
+    // AUTH CHECK
     if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
     views('Signup',
     '',
@@ -56,6 +64,13 @@ $router->get('dashboard', function() {
 
 // ======================== USER LOGIN
 $router->post('login', function() {
+
+    // AUTH CHECK
+    if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
+
+    // CRF TOKEN CHECK
+    if (!isset($_POST["token"]) || !isset($_SESSION["token"])) { echo "invalid token"; exit(); }
+    if ($_POST["token"] == $_SESSION["token"]) { echo "worked"; } else { echo "invalid token"; exit(); };
 
     require_once "app/vendor/db.php";
 
@@ -99,8 +114,12 @@ $router->post('login', function() {
 // ======================== USER SIGNUP
 $router->post('signup', function() {
 
-    // print_r($_REQUEST);
-    // die;
+    // AUTH CHECK
+    if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
+
+    // CRF TOKEN CHECK
+    if (!isset($_POST["token"]) || !isset($_SESSION["token"])) { echo "invalid token"; exit(); }
+    if ($_POST["token"] == $_SESSION["token"]) { echo "worked"; } else { echo "invalid token"; exit(); };
 
     require_once "app/vendor/db.php";
 

@@ -13,7 +13,7 @@
 
 <label class="control">
 <span>Email Address</span>
-    <input required type="email" name="email" placeholder=" " value="<?php if ($dev == 1){ echo "compoxition@gmail.com"; } ?>">
+    <input required type="email" name="email" placeholder="Email Address" value="<?php if ($dev == 1){ echo "compoxition@gmail.com"; } ?>">
 </label>
 
 </div>
@@ -21,13 +21,16 @@
 <div class="col-12">
 <label class="control">
 <span>Password</span>
-    <input required type="password" name="password" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>">
+    <input required type="password" name="password" placeholder="Password" value="<?php if ($dev == 1){ echo "03311442244"; } ?>">
 </label>
 </div>
 </div>
 
 <div class="row">
 <div class="col-6">
+
+<!-- CRF TOKEN -->
+<input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? '' ?>">
 <button class="btn btn-success w100 h50" type="submit">Login</button>
 </div>
 <div class="col-6">
