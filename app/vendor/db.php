@@ -1,5 +1,7 @@
 <?php
 
+use Mailgun\Mailgun;
+
 // INCLUDE XCRUD
 include('xcrud/xcrud.php');
 
