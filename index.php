@@ -3,6 +3,7 @@
 // CORECMS v1.0
 
 use AppRouter\Router;
+use Mailgun\Mailgun;
 
 define('appname', 'ODEREO');
 
