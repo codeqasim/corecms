@@ -1,6 +1,7 @@
 <?php
 
 use AppRouter\Router;
+use Mailgun\Mailgun;
 
 // ======================== 404 PAGE
 $router = new Router(function ($method, $path, $statusCode, $exception) {
