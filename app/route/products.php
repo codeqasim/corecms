@@ -48,11 +48,11 @@ $router->get('account/products', function() {
 
     $xcrud->button(root.'account/products/{product_id}','Edit Product','icon-pencil-2','',array('target'=>'_self'));
 
-    $view = "app/views/xview.php";
+    $view = "app/views/user/products/xproducts.php";
     $xcrud->unset_title();
     $title = "Products";
     $account_nav = 1;
-    $add_button = root."account/products/add";
+    // $add_button = root."account/products/add";
     include "app/views/main.php";
 });
 
@@ -297,7 +297,7 @@ $router->get('account/inventory', function() {
 
     // AUTH LOOKUP
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
-    include "db.php";
+    include "app/vendor/db.php";
 
     // DELETE ALL PRODUCTS WITH NO NAME
     // $query =  $mysqli->query("DELETE FROM `products` WHERE `products`.`product_name` = '' AND `product_user_id` = '".$_SESSION['user_id']."';");
@@ -338,19 +338,19 @@ $router->get('account/inventory', function() {
     $transactions->fields('unit');
 
 
-    $view = "views/xview.php";
+    $view = "app/views/xview.php";
     $xcrud->unset_title();
     $title = "Inventory";
     $account_nav = 1;
-    // $add_button = root."account/products/add";
-    include "views/main.php";
+    // $add_button = "";
+    include "app/views/main.php";
 
 });
 
 // PROUCTS
 $router->get('account/categories', function() {
 
-    include "db.php";
+    include "app/vendor/db.php";
     $xcrud = Xcrud::get_instance();
     $xcrud->table("categories");
 
@@ -374,12 +374,13 @@ $router->get('account/categories', function() {
     array('width' => 600, 'folder' => 'thumbs'), // using 'thumbs' subfolder
     )));
 
-    $view = "views/xview.php";
+    $view = "app/views/xview.php";
     $xcrud->unset_title();
+    $xcrud->unset_csv();
     $title = "Categories";
     $account_nav = 1;
-    // $add_button = root."account/products/add";
-    include "views/main.php";
+    // $add_button = "";
+    include "app/views/main.php";
 
 });
 

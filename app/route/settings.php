@@ -27,7 +27,7 @@ $router->get('account/stores', function() {
     $xcrud->fields('store_img,store_category_id,store_city_id,store_status,store_name,store_mobile,store_mobile,store_address,store_desc,store_views,store_user_id');
     $xcrud->disabled('store_views');
 
-    $xcrud->label('store_category_id','Store Category')->label('store_city_id','Store City')->label('store_desc','Store Description');
+    $xcrud->label('store_category_id','Category')->label('store_city_id','City')->label('store_desc','Description')->label('store_img','Image')->label('store_name','Name')->label('store_address','Addess')->label('store_mobile','Mobile')->label('store_status','Status')->label('store_views','Views')->label('store_approval','Approval')->label('store_featured','Featured');
 
     $xcrud->column_class('store_img', 'zoom_img');
     $xcrud->change_type('store_img', 'image', false, array('path' => '../../../public/storage/stores/',

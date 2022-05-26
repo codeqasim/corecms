@@ -170,7 +170,6 @@ var RecaptchaOptions = {
 
 <script>
     <?php
-
     $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
     if (end($url) == "failed") { ?>
 
@@ -181,4 +180,16 @@ var RecaptchaOptions = {
     } })
 
     <?php } ?>
+
+    <?php
+    $url = explode('/', $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    if (end($url) == "email_exist") { ?>
+
+    vt.error("Please use new email address",{
+    title:"Email already exists",
+    position: "bottom-center",
+    callback: function (){ //
+    } })
+    <?php } ?>
+
 </script>

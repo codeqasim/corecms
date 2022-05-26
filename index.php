@@ -11,6 +11,7 @@ define('appname', 'ODEREO');
 session_start();
 
 // INCLUDE VENDORS
+include "vendor/autoload.php";
 include "app/vendor/router.php";
 include "app/route/users.php";
 include "app/route/settings.php";
@@ -80,6 +81,8 @@ $router->get('mail', function() {
 
 });
 
+\Sentry\init(['dsn' => 'https://ae5f9f40bb094588ae8f0e4631161067@o1024531.ingest.sentry.io/6441484' ]);
+// throw new Exception("My first Sentry error!");
 
 // DISPATCH ROUTER
 $router->dispatchGlobal();

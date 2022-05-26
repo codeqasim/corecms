@@ -64,6 +64,8 @@ $router->get('account/email_verification', function() {
 // ======================== USER DASHBOARD
 $router->get('dashboard(.*)', function() {
 
+    if (isset($_SESSION['user_login']) == false) { header('Location: '.root.'login'); };
+
     views('Dashboard',
     '',
     'user/dashboard');
@@ -133,7 +135,6 @@ $router->post('signup', function() {
     // echo $_SESSION["token"];
     // die;
 
-
     require_once "app/vendor/db.php";
 
         // VALIDATION
@@ -149,11 +150,16 @@ $router->post('signup', function() {
         $mo = preg_replace('/[^A-Za-z0-9\-]/', '', $m); // REMOVE SPECIAL CHARTS.
 
         // REMOVE ZERO FROM MOBILE NUMBER
-        if ($mo[0] == 0 ) { $mobile = "92". ltrim($mo, "0"); } else {
-            $mobile = "92". $mo; }
+        if ($mo[0] == 0 ) { $mobile = "92". ltrim($mo, "0"); } else { $mobile = "92". $mo; }
 
         $mail_code = rand(100000, 999999);
         $mobile_code = rand(100000, 999999);
+
+        // CHECK IF EMAIL EXIST
+        $sql = "SELECT * FROM accounts WHERE email = '".$_POST['email']."'";
+        $res=mysqli_num_rows(mysqli_query($mysqli, $sql));
+        if($res == 1) { header("Location: ".root."signup/email_exist"); die; }
+
 
         $query = $mysqli->query("INSERT INTO `accounts` (`id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `nic_no`, `user_city_id`, `user_img`, `mobile_verification`, `mobile_code`, `email_verification`, `email_code`, `docs_verification`, `social_verification`, `user_address`, `user_job_type`, `user_status`)
         VALUES (NULL, '".$_POST['first_name']."', '".$_POST['last_name']."', '".$mobile."', '".$_POST['email']."', '".md5($_POST['password'])."', '', '', '', '0', '".$mobile_code."', '0', '".$mail_code."', '0', '0', NULL, NULL, '0');");
@@ -193,7 +199,7 @@ $router->post('signup', function() {
 
             } else {
 
-            header("Location: ".root."signup/failed");
+            // header("Location: ".root."signup/failed");
 
         }
 });

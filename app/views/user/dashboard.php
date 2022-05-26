@@ -28,7 +28,7 @@
 <div class="pop">
 
 <div class="row">
-<div class="col-6 tl" style="font-size: 24px;"><p><strong>Orders Today</strong></p></div><div class="col-6 text-right" style="font-size: 24px;color:var(--theme-text)"><strong>0</strong></div><hr>
+<div class="col-6 tl" style="font-size: 20px;"><p><strong>Orders Today</strong></p></div><div class="col-6 text-right" style="font-size: 24px;color:var(--theme-text)"><strong>0</strong></div><hr>
 <div class="col-6 tl"><p>Total Amount Today</p></div><div class="col-6 text-right" style="color:var(--theme-text)"><strong>Rs.
     0</strong></div><hr>
 <div class="col-6 tl"><p>Orders This Month</p></div><div class="col-6 text-right"><strong>0</strong></div><hr>
@@ -36,13 +36,10 @@
 
 </div>
 
-
 </div>
 </div>
 
-
 </div>
-
 			<script src="https://code.highcharts.com/5/js/highcharts.js"></script>
 			<div id="container"></div>
 
@@ -51,7 +48,6 @@
 	</div>
 </div>
 </div>
-
 
 <script>
 	Highcharts.chart('container', {
@@ -117,6 +113,7 @@ title: {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   font-size: 12px;
   border-radius: 15px;
+  color: #000
 }
 
 .highcharts-root text {
@@ -124,7 +121,7 @@ title: {
 }
 
 .highcharts-background {
-  fill: #000e4f;
+  fill: #fff;
 }
 
 .highcharts-plot-border, .highcharts-plot-background {
@@ -137,20 +134,20 @@ title: {
 
 /* Titles */
 .highcharts-title {
-  fill: #E0E0E3;
+  fill: #000;
   text-transform: uppercase;
   font-size: 20px;
 }
 
 .highcharts-subtitle {
-  fill: #E0E0E3;
+  fill: #000;
   text-transform: uppercase;
 }
 
 /* Axes */
 .highcharts-axis-line {
   fill: none;
-  stroke: #C0D0E0;
+  stroke: #000;
 }
 
 .highcharts-yaxis .highcharts-axis-line {
@@ -158,11 +155,11 @@ title: {
 }
 
 .highcharts-axis-title {
-  fill: #707070;
+  fill: #000;
 }
 
 .highcharts-axis-labels {
-  fill: #E0E0E3;
+  fill: #000;
   cursor: default;
   font-size: 0.9em;
 }
@@ -475,6 +472,10 @@ g.highcharts-series, .highcharts-point {
   font-weight: bold;
   cursor: pointer;
   stroke-width: 0;
+}
+
+.highcharts-legend-item text tspan {
+  fill: #000
 }
 
 .highcharts-legend-item:hover text {
