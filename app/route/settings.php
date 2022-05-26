@@ -24,7 +24,7 @@ $router->get('account/stores', function() {
     $xcrud->relation('store_category_id','categories','category_id','category_name','categories.category_type = ""');
 
     // $xcrud->columns('store_img,store_featured,store_status,store_name,store_mobile,store_approval,store_views');
-    $xcrud->fields('store_img,store_category_id,store_city_id,store_status,store_name,store_mobile,store_mobile,store_address,store_desc,store_views,store_user_id');
+    $xcrud->fields('store_img,store_name,store_category_id,store_city_id,store_status,store_mobile,store_address,store_mobile,store_addres,store_views,store_desc,store_user_id');
     $xcrud->disabled('store_views');
 
     $xcrud->label('store_category_id','Category')->label('store_city_id','City')->label('store_desc','Description')->label('store_img','Image')->label('store_name','Name')->label('store_address','Addess')->label('store_mobile','Mobile')->label('store_status','Status')->label('store_views','Views')->label('store_approval','Approval')->label('store_featured','Featured');

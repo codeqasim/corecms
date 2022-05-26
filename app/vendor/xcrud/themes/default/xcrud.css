@@ -99,11 +99,17 @@
     border-top-right-radius: 13px;
     overflow-x: auto; clear: both; padding: 0 0px; margin-bottom: 8px; }
 .xcrud-top-actions{
+    margin-bottom: 0px;
+        float: right;
+    margin-top: 10px;
+    margin-right: 0px;
+}
+/* .xcrud-top-actions{
     margin-bottom: 38px;
         float: right;
     margin-top: -62px;
     margin-right: 15px;
-}
+} */
 .xcrud-button, a.xcrud-button{
     border: 1px solid #000; margin-left: 6px; height: 34px; line-height: 16px; background: #fff; color: #000000; font-weight: 500; cursor: pointer; overflow: hidden; padding: 8px 14px; font-size: 14px; text-align: center; letter-spacing: .2px; border-radius: 5px; white-space: nowrap; text-overflow: ellipsis; transition: all .2s ease; transition-property: color,border-color,background,width,height,box-shadow; -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -612,8 +618,7 @@ h2{
 .zoom_img img:hover { box-shadow: 1px 2px 8px rgb(0 0 0 / 46%); -moz-transform: scale(3); -webkit-transform: scale(3); -o-transform: scale(3); z-index: 9999!important; cursor: none; }
 
 .xcrud-th { border:1px solid transparent !important; background-color: #ebeef3; }
-.xcrud-top-actions .xcrud-action, .xcrud-rightside .xcrud-action { margin-top: -86px; margin-bottom: 2px; background: transparent; color: #000 !important; border: transparent; padding: 5px 4px; height: 24px; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px;  }
- .xcrud-top-actions { display: flex }
+.xcrud-top-actions .xcrud-action, .xcrud-rightside .xcrud-action { color: #fff !important; margin-top: -86px; margin-bottom: 2px; background: transparent; color: #000 !important; border: transparent; padding: 5px 4px; height: 24px; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px;  }
+.xcrud-top-actions { display: flex }
 .xcrud-rightside .xcrud-button.xcrud-green.xcrud-action, .xcrud-rightside .xcrud-purple,.xcrud-top-actions a { margin-top: -68px !important; padding: 20px 34px 20px  !important; display: flex; align-items: center; gap: 8px; right: 0px; background: var(--theme-secondary) !important; color: #fff !important; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%), 0 1px 2px 0 rgb(0 0 0 / 5%) !important; border-color: rgb(209 213 219/1) !important; border-width: 1px !important; }
-
 .xcrud tbody { font-size: 0.9rem; }

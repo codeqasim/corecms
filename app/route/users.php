@@ -64,11 +64,42 @@ $router->get('account/email_verification', function() {
 // ======================== USER DASHBOARD
 $router->get('dashboard(.*)', function() {
 
+    // AUTH CHECK
     if (isset($_SESSION['user_login']) == false) { header('Location: '.root.'login'); };
 
     views('Dashboard',
     '',
     'user/dashboard');
+});
+
+// ======================== USER DASHBOARD
+$router->get('profile', function() {
+
+    // AUTH CHECK
+    if (isset($_SESSION['user_login']) == false) { header('Location: '.root.'login'); };
+
+    // print_r($data);
+
+    views('Profile',
+    '',
+    'user/profile');
+});
+
+$router->post('account/update-user', function() {
+
+    // AUTH CHECK
+    if (isset($_SESSION['user_login']) == false) { header('Location: '.root.'login'); };
+
+    require_once "app/vendor/db.php";
+    $user = $mysqli->query("UPDATE `accounts` SET
+    `first_name` = '".$_POST['first_name']."',
+    `last_name` = '".$_POST['last_name']."',
+    `mobile` = '".$_POST['mobile']."',
+    `password` = '".md5($_POST['password'])."'
+    WHERE `accounts`.`id` = '".$_SESSION['user_id']."'");
+
+    // REDIRECT TO DASHBOARD
+    header( "Location: ".root."profile#updated" );
 });
 
 // ======================== USER LOGIN
@@ -160,7 +191,6 @@ $router->post('signup', function() {
         $res=mysqli_num_rows(mysqli_query($mysqli, $sql));
         if($res == 1) { header("Location: ".root."signup/email_exist"); die; }
 
-
         $query = $mysqli->query("INSERT INTO `accounts` (`id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `nic_no`, `user_city_id`, `user_img`, `mobile_verification`, `mobile_code`, `email_verification`, `email_code`, `docs_verification`, `social_verification`, `user_address`, `user_job_type`, `user_status`)
         VALUES (NULL, '".$_POST['first_name']."', '".$_POST['last_name']."', '".$mobile."', '".$_POST['email']."', '".md5($_POST['password'])."', '', '', '', '0', '".$mobile_code."', '0', '".$mail_code."', '0', '0', NULL, NULL, '0');");
 
@@ -203,3 +233,4 @@ $router->post('signup', function() {
 
         }
 });
+

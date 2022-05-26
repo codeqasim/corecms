@@ -84,7 +84,6 @@
              <span>Product Description</span>
             </label>
 
-
             <?php
             if (isset($images)) { ?>
             <script>let counter = <?=count($images)?>;</script>
@@ -169,10 +168,10 @@
 
             <!-- <link href="<?=root?>assets/plugins/filepond/filepond-plugin-image-preview.min.css" rel="stylesheet"> -->
             <!-- <script src="<?=root?>assets/plugins/filepond/filepond-plugin-file-validate-type.js"></script> -->
-            <link href="<?=root?>assets/plugins/filepond/filepond.min.css" rel="stylesheet">
-            <script src="<?=root?>assets/plugins/filepond/filepond-plugin-file-encode.min.js"></script>
-             <script src="<?=root?>assets/plugins/filepond/filepond-plugin-image-exif-orientation.min.js"></script>
-            <script src="<?=root?>assets/plugins/filepond/filepond.js"></script>
+            <link href="<?=root?>public/assets/plugins/filepond/filepond.min.css" rel="stylesheet">
+            <script src="<?=root?>public/assets/plugins/filepond/filepond-plugin-file-encode.min.js"></script>
+             <script src="<?=root?>public/assets/plugins/filepond/filepond-plugin-image-exif-orientation.min.js"></script>
+            <script src="<?=root?>public/assets/plugins/filepond/filepond.js"></script>
 
             <script>
 
@@ -315,9 +314,7 @@
                 <button class="btn btn-success w100" type="submit">Submit</button>
                 </div>
             </div>
-
         </div>
-
 </div>
 </div>
 </div>

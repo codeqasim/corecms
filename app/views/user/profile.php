@@ -1,46 +1,66 @@
-<div class="container">
+<div class="getting_started">
+    <?php include "app/views/user/sidebar.php"; ?>
+    <div class="elements">
+
+        <h4 class="alert_title df jcsb">
+        <span class="df aic gap10">
+         <?=$title?> </span>
+        </h4>
+
+        <hr>
+
+        <?php
+
+        require_once "app/vendor/db.php";
+        $data = $mysqli->query('SELECT * FROM accounts WHERE id = "'.$_SESSION['user_id'].'"')->fetch_object();
+
+        ?>
+
+<div class="">
 	<div class="row">
-		<div class="col-3">
-			<?php include "sidebar.php"; ?>
-	    </div>
+
         <div class="col-9">
-            <div class="page_head">
-            <h4 class="sifar">My Profile</h4>
-             </div>
 
              <form action="<?=root?>account/update-user" method="post">
 
                 <div class="row">
 
-                <div class="col-12">
-                    <label for="" class="filled w100 mb-1">
-                        <input type="text" placeholder=" " name="name" value="<?=$data->name?>" readonly>
-                        <span>Full Name</span>
-                    </label>
-                </div>
-        
                 <div class="col-6">
-                <label for="" class="filled w100 mb-1">
-                        <input type="number" placeholder=" " name="mobile" value="<?=$data->mobile?>" readonly>
-                        <span>Mobile Number</span>
+                    <label class="control">
+                    <span>First Name</span>
+                    <input required type="text" name="first_name" placeholder="Your First Name" value="<?=$data->first_name?>">
                     </label>
                 </div>
 
                 <div class="col-6">
-                <label for="" class="filled w100 mb-1">
-                        <input type="email" placeholder=" " name="email" value="<?=$data->email?>" readonly>
-                        <span>Email Address</span>
+                    <label class="control">
+                    <span>Last Name</span>
+                    <input required type="text" name="last_name" placeholder="Your Last Name" value="<?=$data->last_name?>">
+                    </label>
+                </div>
+
+                <div class="col-6">
+                    <label class="control">
+                    <span>Mobile</span>
+                    <input required type="text" name="mobile" placeholder="Mobile" value="<?=$data->mobile?>">
+                    </label>
+                </div>
+
+                <div class="col-6">
+                    <label class="control">
+                    <span>Email</span>
+                    <input required type="email" name="email" placeholder="Email" value="<?=$data->email?>" disabled>
+                    </label>
+                </div>
+
+                <div class="col-6">
+                    <label class="control">
+                    <span>Password</span>
+                    <input required type="password" name="password" placeholder="Password" value="<?php // $data->password?>">
                     </label>
                 </div>
 
                 <!-- <div class="col-6">
-                <label for="" class="filled w100 mb-1">
-                        <input type="password" placeholder=" " name="password" value="<?php // =$data->password?>">
-                        <span>Password</span>
-                    </label>
-                </div> -->
-
-                <div class="col-6">
                 <label for="" class="filled w100 mb-1">
                         <input type="text" placeholder=" " name="nic_no" value="<?=$data->nic_no?>">
                         <span>NIC Number</span>
@@ -81,19 +101,20 @@
                 <div class="col-6 mb-1">
                     <label for="" class="filled w100">
                         <select name="" id="" class="user_city_id" style="padding-left:12px;" disabled>
-                            
-                        <?php 
+
+                        <?php
                         if (isset($_SESSION['cities'])){ foreach ($_SESSION['cities'] as $l){ ?>
-                        <option value="<?=$l->id?>"><?=$l->city_name?></option>    
+                        <option value="<?=$l->id?>"><?=$l->city_name?></option>
                         <?php }} ?>
 
                         </select>
                         <div class="placeholder">User City</div>
                         <span></span>
                     </label>
-                </div>
+                </div> -->
 
-                <div class="col-12">
+                <div class="db mt-1"></div>
+                <div class="col-6">
                     <button type="submit" class="btn btn-success w100">
                         Update
                     </button>
@@ -107,7 +128,10 @@
     </div>
 </div>
 
-<?php 
+</div>
+</div>
+
+<?php
 
 if (isset($data->user_city_id)) { $city_id = $data->user_city_id;} else { $city_id = ""; }
 if (isset($data->user_job_type)) { $user_job_type = $data->user_job_type;} else { $user_job_type = ""; }
@@ -124,15 +148,14 @@ if (isset($data->user_job_type)) { $user_job_type = $data->user_job_type;} else 
     $('.user_job_type option[value=<?=$user_job_type?>]').attr('selected', 'selected');
     <?php } ?>
 
-    <?php 
-    $url = explode('/', $_GET['url']);
-    if (end($url) == "update") { ?>
+    var hash = window.location.hash.substr(1);
 
-    vt.success("Your profile has been updated",{ 
-    title:"Information Updated", 
-    position: "top-center", 
-    callback: function (){ // 
-    } })
+    if (hash == "updated") {
+        vt.success("Your profile has been updated",{
+        title:"Information Updated",
+        position: "bottom-center",
+        callback: function (){ //
+        } })
+    }
 
-    <?php } ?>
 </script>

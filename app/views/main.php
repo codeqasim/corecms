@@ -250,11 +250,21 @@ $whitelist = array( '127.0.0.1', '::1' ); if(in_array($_SERVER['REMOTE_ADDR'], $
 
 <script>
 
+    // Sidebar
+    $('.sidebar a,.fadeout').click(function(){
+      $('body').fadeOut(120);
+        setTimeout(function() {
+           $('body').fadeIn(150);
+        }, 4000);
+    });
+
+
     // FADEOUT BODY ON CLICK
     <?php if (isset($_SESSION['user_login'])==true){ } else { ?>
     var aElems = document.getElementsByTagName('a');
     for (var i = 0, len = aElems.length; i < len; i++) {
        aElems[i].onclick = function() {
+
           document.body.classList.add("bodyout");
           };
       }
