@@ -193,3 +193,7 @@ var RecaptchaOptions = {
     <?php } ?>
 
 </script>
+
+<style>
+    header,footer,.pages_links{display:none !important}
+</style>

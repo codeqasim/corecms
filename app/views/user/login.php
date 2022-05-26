@@ -81,6 +81,6 @@
 </script>
 
 <style>
-    header,footer,.pages_links{display:none}
-    body{background: var(--theme-bg);}
+    header,footer,.pages_links{display:none !important}
+    body{padding:0px}
 </style>
