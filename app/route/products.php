@@ -59,7 +59,7 @@ $router->get('account/products', function() {
 // ============================================= ADD PRODUCT
 $router->get('account/products/add', function() {
 
-    file_put_contents("post.log", print_r($_POST, true));
+    // file_put_contents("post.log", print_r($_POST, true));
 
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
     include "app/vendor/db.php";
