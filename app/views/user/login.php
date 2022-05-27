@@ -76,6 +76,8 @@
     callback: function (){ //
     } })
 
+    <?php } ?>
+
     var hash = window.location.hash.substr(1);
 
     if (hash == "password_reset") {
@@ -83,9 +85,7 @@
     title:"Password Reset Successfully",
     position: "bottom-center",
     callback: function (){ //
-    } })
-
-    <?php } ?>
+    } }) }
 
 </script>
 
