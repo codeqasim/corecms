@@ -229,7 +229,6 @@ $router->post('account/products/update', function() {
     $query = "UPDATE `products` SET
     `product_name` = '".$_REQUEST['product_name']."'
     `product_sku` = 'sku',
-    `product_store_id` = '".$_REQUEST['product_store_id']."',
     `product_user_id` = '".$_REQUEST['user_id']."',
     `product_cat_main_id` = '".$_REQUEST['category_main']."'
 
