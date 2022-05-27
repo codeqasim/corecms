@@ -30,7 +30,7 @@ $router->get('account/products', function() {
     $xcrud->unset_csv();
 
     $xcrud->column_class('product_img', 'zoom_img');
-    $xcrud->change_type('product_img', 'image', true, array('width' => 200, 'path' => '../public/storage/products/',
+    $xcrud->change_type('product_img', 'image', true, array('width' => 200, 'path' => '../../../public/storage/products/',
 
     // 'thumbs'=>array(
     // array('width'=> 50, 'marker'=>'_s'),
@@ -287,7 +287,6 @@ $router->post('account/products/upload', function() {
         // die;
 
         $date = date("yy:m:d:h:i");
-        // $sql = "INSERT INTO `products_images` (`image_id`, `image_name`,`image_product_id`, `image_created_at`) VALUES (NULL, '".$img."', '".$queries['source']."','".$date."');";
         $sql = "INSERT INTO `products_images` (`image_id`, `image_product_id`, `image_created_at`, `image_updated_at`, `image_name`) VALUES (NULL, '".$queries['source']."', '".$date."', '".$date."', '".$img."');";
 
         // MYSQL UPDATE QUERY
