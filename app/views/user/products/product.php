@@ -246,9 +246,12 @@
                 <label class="filled w100">
                 <select name="category_main" class="category" required>
                     <option value="">Select</option>
-                    <?php foreach ($categories as $main) { ?>
+
+                    <?php
+                    if (isset($categories)) {
+                    foreach ($categories as $main) { ?>
                     <option value="<?=$main['category_id']?>"><?=$main['category_name']?></option>
-                    <?php } ?>
+                    <?php } } ?>
                 </select>
                 <div class="placeholder">Category</div>
                 <span></span>
