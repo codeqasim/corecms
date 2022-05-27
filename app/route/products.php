@@ -287,12 +287,11 @@ $router->post('account/products/upload', function() {
         // die;
 
         $date = date("yy:m:d:h:i");
-        $sql = "INSERT INTO `products_images` (`image_id`, `image_name`,`image_product_id`, `image_created_at`) VALUES (NULL, '".$img."', '".$queries['source']."','".$date."');";
+        // $sql = "INSERT INTO `products_images` (`image_id`, `image_name`,`image_product_id`, `image_created_at`) VALUES (NULL, '".$img."', '".$queries['source']."','".$date."');";
+        $sql = "INSERT INTO `products_images` (`image_id`, `image_product_id`, `image_created_at`, `image_updated_at`, `image_name`) VALUES (NULL, '2', '2022-05-27 03:37:34.000000', '2022-05-27 03:37:34.000000', 'name.jpg');";
 
         // MYSQL UPDATE QUERY
         $query = "UPDATE `products` SET `product_img` = '".$img."' WHERE `products`.`product_id` = '".$queries['source']."';";
-
-
 
         if ($mysqli->query($query) === TRUE) {
         } else { echo "Error updating record: " . $mysqli->error; }
