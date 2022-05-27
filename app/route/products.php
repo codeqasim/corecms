@@ -287,7 +287,7 @@ $router->post('account/products/upload', function() {
         // die;
 
         $date = date("yy:m:d:h:i");
-        $sql = "INSERT INTO `products_images` (`image_id`, `image_name`,`image_product_id`, `image_created_at`) VALUES (NULL, '$img', '".$queries['source']."','$date');";
+        $sql = "INSERT INTO `products_images` (`image_id`, `image_name`,`image_product_id`, `image_created_at`) VALUES (NULL, '".$img."', '".$queries['source']."','".$date."');";
 
         // MYSQL UPDATE QUERY
         $query = "UPDATE `products` SET `product_img` = '".$img."' WHERE `products`.`product_id` = '".$queries['source']."';";
