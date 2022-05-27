@@ -297,11 +297,12 @@ $router->post('account/products/upload', function() {
         if ($mysqli->query($query) === TRUE) {
         } else { echo "Error updating record: " . $mysqli->error; }
 
-        // if ($mysqli->query($sql) === TRUE) {
-        //     echo "New record created successfully";
-        // } else {
-        //     echo "Error: " . $sql . "<br>" . $mysqli->error;
-        // }
+        if ($mysqli->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $mysqli->error;
+            die;
+        }
 
         } else {
         echo  'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
