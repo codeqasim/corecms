@@ -18,6 +18,7 @@ include "app/route/settings.php";
 include "app/route/products.php";
 include "app/route/store.php";
 include "app/api.php";
+include "app/vendor/mail.php";
 
 // VIEWS FUNCTION
 function views($title,$desc,$body){
@@ -27,24 +28,7 @@ $view  = $body.".php";
 include "app/views/main.php";
 };
 
-// MAILER
-function mailer($mail){
-    include "app/vendor/mail.php";
-    $mg->messages()->send($SENDER_DOMAIN, [
-        'from'    => 'ecomistan <postmaster@ecomistan.com>',
-        'to'      => ''.$mail['name'].' <'.$mail['email'].'>',
-        'subject' => ''.$mail['subject'].'',
-        'template'    => 'global',
-        'h:X-Mailgun-Variables'    => '{
-            "link": "'.$mail['link'].'",
-            "code":"'.$mail['code'].'",
-            "title":"'.$mail['subject'].'",
-            "content_title":"'.$mail['content_title'].'",
-            "content":"'.$mail['content'].'"
-        }'
-    ]);
-    return $mg;
-}
+
 
 // X-FRAME OPTIONS
 header("X-Frame-Options: SAMEORIGIN");

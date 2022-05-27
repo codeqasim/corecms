@@ -87,7 +87,7 @@ $router->post('forget-password(.*)', function() {
             'email'=>$_POST['email'],
             'subject'=>'Password Reset',
             'content_title'=>'Your password has been reset',
-            'content'=>'please find your new password below',
+            'content'=>'Please find your new password below',
             'link'=>'',
             'code'=>$new_password
         ];
