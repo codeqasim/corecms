@@ -48,7 +48,7 @@ $router->get('account/products', function() {
     $xcrud->label('product_status','Status')->label('product_img','Image')->label('product_stock_id','Stock')->label('product_store_id','Store')->label('product_brand_id','Brand')->label('product_sku','SKU')->label('product_approval','Appoval');
 
     $xcrud->button(root.'account/products/{product_id}','Edit Product','icon-pencil-2','',array('target'=>'_self'));
-    $xcrud->column_pattern('product_name','<a href="products/{product_id}"><strong>{product_name}</strong></a> ');
+    $xcrud->column_pattern('product_name','<a href="{product_id}"><strong>{product_name}</strong></a> ');
 
     $xcrud->column_pattern('product_status',' ');
 
