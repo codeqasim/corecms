@@ -223,7 +223,7 @@ $router->post('account/products/update', function() {
 
     if (isset($_POST['product_status']) == true ) { $product_status = 1; } else { $product_status = 0; }
 
-    $date = date("yy:m:d:h:i");
+    $date = date('Y-m-d H:i:s');
 
     // MYSQL UPDATE QUERY
     $query = "UPDATE `products` SET
