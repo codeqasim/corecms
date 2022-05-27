@@ -226,7 +226,10 @@ $router->post('account/products/update', function() {
     $date = date("yy:m:d:h:i");
 
     // MYSQL UPDATE QUERY
-    $query = "UPDATE `products` SET `product_sku` = 'sku' WHERE `products`.`product_id` = 7;";
+    $query = "UPDATE `products` SET
+    `product_sku` = 'sku',
+    `product_name` = '".$_REQUEST['product_name']."'
+    WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";";
 
     // $query = "UPDATE `products` SET
     // `product_sku` = '".$_REQUEST['product_sku']."',
