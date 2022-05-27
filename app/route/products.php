@@ -217,7 +217,7 @@ $router->post('account/products/update', function() {
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
 
     include "app/vendor/db.php";
-
+    
     // print_r($_POST);
     // die;
 
