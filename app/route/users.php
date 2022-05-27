@@ -82,12 +82,14 @@ $router->post('forget-password(.*)', function() {
         $query = "UPDATE `accounts` SET `password` = '".md5($new_password)."' WHERE `accounts`.`email` = '".$_POST['email']."';";
         $result = mysqli_query($mysqli, $query);
 
-        // SEND MAIL
         $mail = [
             'name'=>$user_info->first_name,
             'email'=>$_POST['email'],
-            'subject'=>'Hello'.$user_info->first_name,
-            'link'=> $new_password
+            'subject'=>'Password Reset',
+            'content_title'=>'Your password has been reset',
+            'content'=>'please find your new password below',
+            'link'=>'',
+            'code'=>$new_password
         ];
         mailer($mail);
 

@@ -20,7 +20,7 @@ $router->get('account/stores', function() {
     // $xcrud->unset_add();
     $xcrud->unset_csv();
 
-    $xcrud->relation('store_city_id','cities','city_id','city_name');
+    //$xcrud->relation('store_city_id','cities','city_id','city_name');
     $xcrud->relation('store_category_id','categories','category_id','category_name','categories.category_type = ""');
 
     // $xcrud->columns('store_img,store_featured,store_status,store_name,store_mobile,store_approval,store_views');

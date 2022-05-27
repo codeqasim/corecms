@@ -33,9 +33,15 @@ function mailer($mail){
     $mg->messages()->send($SENDER_DOMAIN, [
         'from'    => 'ecomistan <postmaster@ecomistan.com>',
         'to'      => ''.$mail['name'].' <'.$mail['email'].'>',
-        'subject' => 'Hello '.$mail['subject'].'',
-        'template'    => 'signup',
-        'h:X-Mailgun-Variables'    => '{"link": "'.$mail['link'].'"}'
+        'subject' => ''.$mail['subject'].'',
+        'template'    => 'global',
+        'h:X-Mailgun-Variables'    => '{
+            "link": "'.$mail['link'].'",
+            "code":"'.$mail['code'].'",
+            "title":"'.$mail['subject'].'",
+            "content_title":"'.$mail['content_title'].'",
+            "content":"'.$mail['content'].'"
+        }'
     ]);
     return $mg;
 }
@@ -51,8 +57,11 @@ $router->get('mail', function() {
     $mail = [
         'name'=>'qasim',
         'email'=>'compoxition@gmail.com',
-        'subject'=>'6545',
-        'link'=>'new pass'
+        'subject'=>'subject',
+        'content_title'=>'your password has been reset',
+        'content'=>'please find your new password below',
+        'link'=>'https://google.com',
+        'code'=>'code'
     ];
     mailer($mail);
 
