@@ -62,14 +62,16 @@ $router->get('account/products/add', function() {
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
     include "app/vendor/db.php";
 
+    echo "work";
+    die;
+    
     $query =  $mysqli->query("INSERT INTO `products` (`product_id`,`product_name`,`product_user_id`) VALUES ( NULL , '', '".$_SESSION['user_id']."' );");
     $product =  $mysqli->query("SELECT * FROM `products` WHERE `product_user_id` = '".$_SESSION['user_id']."' ORDER BY product_id DESC LIMIT 1")->fetch_object();
 
     $product_id = $product->product_id;
 
-    echo "work";
-    die;
-    
+
+
     // GET USER CATEGORIES MAIN
     $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' ORDER BY category_id DESC LIMIT 500");
     $rows = array();
