@@ -614,7 +614,7 @@ h2{
     text-align: left;
 }
 
-.zoom_img img { width: 45px; padding: 0!important; border-radius: 3px; -moz-transition: -moz-transform .1s ease-in; -webkit-transition: -webkit-transform .1s ease-in; -o-transition: -o-transform .1s ease-in; z-index: 9999; display: block; }
+.zoom_img img { max-height: 55px; min-height: 40px; background: #eee; border-radius: 5px; width: 45px; padding: 0!important; border-radius: 3px; -moz-transition: -moz-transform .1s ease-in; -webkit-transition: -webkit-transform .1s ease-in; -o-transition: -o-transform .1s ease-in; z-index: 9999; display: block; }
 .zoom_img img:hover { box-shadow: 1px 2px 8px rgb(0 0 0 / 46%); -moz-transform: scale(3); -webkit-transform: scale(3); -o-transform: scale(3); z-index: 9999!important; cursor: none; }
 
 .xcrud-th { border:1px solid transparent !important; background-color: #ebeef3; }

@@ -3,65 +3,32 @@
 <div class="getting_started">
 	<?php include "app/views/user/sidebar.php"; ?>
 	<div class="elements">
-	<h4 class="alert_title  df jcsb">
+
+    <?php if (!isset($stores)) { ?>
+    <div class="alert-error blink">
+    No store found! please add store. <a href="<?=root?>account/stores"><strong>FROM HERE</strong></a>
+    </div>
+    <?php } ?>
+
+    <?php
+
+    if (!isset($categories)) { ?>
+    <div class="alert-error blink">
+    No categories found! please add categories. <a href="<?=root?>account/categories"><strong>FROM HERE</strong></a>
+    </div>
+    <?php } ?>
+
+	<h4 class="alert_title df jcsb headtitle">
 	<span class="df aic gap10"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>  Add Product </span>
 
         <div class="df gap7" style="min-width:390px">
-
-        <label class="filled w100">
-        <select name="product_store_id" class="h50" required>
-        <!-- <option value="">Select</option> -->
-
-        <?php
-        if (isset($stores)) {
-
-            foreach($stores as $store) {
-            echo "<option value=".$store['store_id'];
-             if ($product->product_store_id == $store['store_id']) { echo '" selected'; }
-            echo  ">".$store['store_name']."</option>";
-            }
-
-        } else {
-            echo "<option value='' class='cr'>No Stores Found</option>";
-        }
-         ?>
-
-        </select>
-        <div class="placeholder">Store Name</div>
-        <span style="right: 20px; margin-top: -34px;"></span>
-        </label>
-
-        <label class="filled w100">
-        <select name="product_brand_id" class="h50">
-        <!-- <option value="">Select</option> -->
-
-        <?php
-
-        // print_r($product);
-        // die;
-
-        if (isset($product_brands)) {
-
-            foreach($product_brands as $brand) {
-            echo "<option value=".$brand['brand_id'];
-             if ($product->product_brand_id == $brand['brand_id']) { echo '" selected'; }
-            echo  ">".$brand['brand_name']."</option>";
-            }
-
-        }
-         ?>
-
-        </select>
-        <div class="placeholder">Brand Name</div>
-        <span style="right: 20px; margin-top: -34px;"></span>
-        </label>
 
         </div>
 
     </h4>
 
         <div class="row">
-            <div class="col-8">
+            <div class="col-8 pr-0">
                 <div class="box w100">
 
                 <div class="row">
@@ -92,7 +59,7 @@
                         <div class="col-2" style="width: 10.8%;">
 
                             <div class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1a7yq8u" style="opacity: 1; transform: none;"><span class="MuiBox-root css-1vboz2"><span class="wrapper lazy-load-image-background blur lazy-load-image-loaded" style="display: inline-block;">
-                            <img class="MuiBox-root css-6jrdpz" alt="preview" src="<?=root?>storage/products/<?=$image['image_name']?>" sx="[object Object]"></span></span>
+                            <img class="MuiBox-root css-6jrdpz" alt="preview" src="<?=root?>public/storage/products/<?=$image['image_name']?>" sx="[object Object]"></span></span>
                             <button class="dell_<?=$image['image_id']?> MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-vp5vtz" tabindex="0" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="MuiBox-root css-0 iconify iconify--eva" sx="[object Object]" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                             <path fill="currentColor" d="m13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29l-4.3 4.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l4.29-4.3l4.29 4.3a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42Z"></path>
@@ -225,39 +192,65 @@
                 <label class="switch mb-1">
                     <input type="checkbox" name="product_status"
                     <?php if ($product->product_status == 1) { echo 'checked'; } ?> >
-                    <span>Product Status</span>
+                    <span>Status</span>
                 </label>
 
                 <label class="filled w100">
-                <select name="category_main" class="main" required>
+        <select name="product_store_id" class="h50" required>
+        <!-- <option value="">Select</option> -->
+
+        <?php
+        if (isset($stores)) {
+
+            foreach($stores as $store) {
+            echo "<option value=".$store['store_id'];
+             if ($product->product_store_id == $store['store_id']) { echo '" selected'; }
+            echo  ">".$store['store_name']."</option>";
+            }
+
+        } else {
+            echo "<option value='' class='cr'>No Stores Found</option>";
+        }
+         ?>
+
+        </select>
+        <div class="placeholder">Store Name</div>
+        <span style="right: 20px; margin-top: -34px;"></span>
+        </label>
+
+        <label class="filled w100">
+        <select name="product_brand_id" class="h50">
+        <!-- <option value="">Select</option> -->
+
+        <?php
+
+        // print_r($product);
+        // die;
+
+        if (isset($product_brands)) {
+
+            foreach($product_brands as $brand) {
+            echo "<option value=".$brand['brand_id'];
+             if ($product->product_brand_id == $brand['brand_id']) { echo '" selected'; }
+            echo  ">".$brand['brand_name']."</option>";
+            }
+
+        }
+         ?>
+
+        </select>
+        <div class="placeholder">Brand Name</div>
+        <span style="right: 20px; margin-top: -34px;"></span>
+        </label>
+
+                <label class="filled w100">
+                <select name="category_main" class="category" required>
                     <option value="">Select</option>
-                    <?php foreach ($category_main as $main) { ?>
+                    <?php foreach ($categories as $main) { ?>
                     <option value="<?=$main['category_id']?>"><?=$main['category_name']?></option>
                     <?php } ?>
                 </select>
-                <div class="placeholder">First Category</div>
-                <span></span>
-                </label>
-
-                <label class="filled w100">
-                <select name="category_sub" class="sub" required>
-                    <option value="">Select</option>
-                    <?php foreach ($category_sub as $sub) { ?>
-                    <option data-value="<?=$sub['category_id']?>" value="<?=$sub['category_parent_id']?>"><?=$sub['category_name']?></option>
-                    <?php } ?>
-                </select>
-                <div class="placeholder">Second Category</div>
-                <span></span>
-                </label>
-
-                <label class="filled w100">
-                <select name="category_sub_sub" class="sub_sub" required>
-                    <option value="">Select</option>
-                    <?php foreach ($category_sub_sub as $sub_sub) { ?>
-                    <option value="<?=$sub_sub['category_parent_id']?>"><?=$sub_sub['category_name']?></option>
-                    <?php } ?>
-                </select>
-                <div class="placeholder">Third Category</div>
+                <div class="placeholder">Category</div>
                 <span></span>
                 </label>
 
@@ -268,42 +261,46 @@
 
                 <script>
 
-                    $('.main option[value=<?php if (isset($product->product_cat_main_id)){ echo $product->product_cat_main_id; } ?>]').attr('selected', 'selected');
-                    $('.sub option[value=<?php if (isset($product->product_cat_sub_id)){ echo $product->product_cat_sub_id; } ?>]').attr('selected', 'selected');
-                    $('.sub_sub option[value=<?php if (isset($product->product_cat_sub_sub_id)){ echo $product->product_cat_sub_sub_id; } ?>]').attr('selected', 'selected');
+                    $('.category option[value=<?php if (isset($product->product_cat_main_id)){ echo $product->product_cat_main_id; } ?>]').attr('selected', 'selected');
+                    // $('.main option[value=<?php if (isset($product->product_cat_main_id)){ echo $product->product_cat_main_id; } ?>]').attr('selected', 'selected');
+                    // $('.sub option[value=<?php if (isset($product->product_cat_sub_id)){ echo $product->product_cat_sub_id; } ?>]').attr('selected', 'selected');
+                    // $('.sub_sub option[value=<?php if (isset($product->product_cat_sub_sub_id)){ echo $product->product_cat_sub_sub_id; } ?>]').attr('selected', 'selected');
 
-                    $(".sub").children('option:gt(0)').hide();
-                    $(".sub_sub").children('option:gt(0)').hide();
+                    // $(".sub").children('option:gt(0)').hide();
+                    // $(".sub_sub").children('option:gt(0)').hide();
 
-                    $(".main").change(function() {
-                        console.log($(this).val());
+                    // $(".main").change(function() {
+                    //     console.log($(this).val());
 
-                        Pace.restart();
+                    //     Pace.restart();
 
-                        $(".sub").children('option:gt(0)').hide();
-                        $(".sub_sub").children('option:gt(0)').hide();
+                    //     $(".sub").children('option:gt(0)').hide();
+                    //     $(".sub_sub").children('option:gt(0)').hide();
 
-                        $(".sub").val($(".sub option:first").val());
-                        $(".sub_sub").val($(".sub_sub option:first").val());
+                    //     $(".sub").val($(".sub option:first").val());
+                    //     $(".sub_sub").val($(".sub_sub option:first").val());
 
-                        $(".sub_sub").children("option[value^=select]").show()
+                    //     $(".sub_sub").children("option[value^=select]").show()
 
-                        $(".sub").children("option[value^=" + $(this).val() + "]").show()
+                    //     $(".sub").children("option[value^=" + $(this).val() + "]").show()
 
-                            $(".sub").change(function() {
-                                var sub_sub_id = this.querySelector(':checked').getAttribute('data-value');
-                                console.log(sub_sub_id);
-                                Pace.restart();
+                    //         $(".sub").change(function() {
+                    //             var sub_sub_id = this.querySelector(':checked').getAttribute('data-value');
+                    //             console.log(sub_sub_id);
+                    //             Pace.restart();
 
-                                $(".sub_sub").children('option').hide();
-                                $(".sub_sub").val($(".sub_sub option:first").val());
-                                $(".sub_sub").children("option[value^=" + sub_sub_id + "]").show()
+                    //             $(".sub_sub").children('option').hide();
+                    //             $(".sub_sub").val($(".sub_sub option:first").val());
+                    //             $(".sub_sub").children("option[value^=" + sub_sub_id + "]").show()
 
-                            })
-                    })
+                    //         })
+                    // })
 
                     $('form').submit (function(e) {
-                     Pace.restart();
+                        $('body').fadeOut(150);
+                        setTimeout(function() {
+                        $('body').fadeIn(150);
+                        }, 4000);
                     });
 
                 </script>

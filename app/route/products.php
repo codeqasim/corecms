@@ -30,7 +30,7 @@ $router->get('account/products', function() {
     $xcrud->unset_csv();
 
     $xcrud->column_class('product_img', 'zoom_img');
-    $xcrud->change_type('product_img', 'image', true, array('width' => 200, 'path' => '../storage/products/',
+    $xcrud->change_type('product_img', 'image', true, array('width' => 200, 'path' => '../public/storage/products/',
 
     // 'thumbs'=>array(
     // array('width'=> 50, 'marker'=>'_s'),
@@ -66,6 +66,13 @@ $router->get('account/products/add', function() {
     $product =  $mysqli->query("SELECT * FROM `products` WHERE `product_user_id` = '".$_SESSION['user_id']."' ORDER BY product_id DESC LIMIT 1")->fetch_object();
 
     $product_id = $product->product_id;
+
+    // GET USER CATEGORIES MAIN
+    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' ORDER BY category_id DESC LIMIT 500");
+    $rows = array();
+    while($row = mysqli_fetch_assoc($db)) {
+    $categories[] = $row;
+    }
 
     // GET USER CATEGORIES MAIN
     $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Main_Category' ORDER BY category_id DESC LIMIT 500");
@@ -125,6 +132,7 @@ $router->get('account/products/add', function() {
     include "app/vendor/db.php";
 
     $product = $mysqli->query('SELECT * FROM products WHERE product_id = "'.$product_id.'" AND product_user_id = "'.$_SESSION['user_id'].'"')->fetch_object();
+
     $product_images = $mysqli->query('SELECT * FROM products_images WHERE image_product_id = "'.$product_id.'" ');
 
     $rows = array();
@@ -132,33 +140,39 @@ $router->get('account/products/add', function() {
     $images[] = $row;
     }
 
-    // print_r($product->product_brand_id);
+    // print_r($product);
     // die;
 
     // IN CASE NO PRODUCT FOUND REDIRECT TO PRODUCTS
     if ($product == false) { header("Location: ".root."account/products"); }
 
     // GET USER CATEGORIES MAIN
-    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Main_Category' ORDER BY category_id DESC LIMIT 500");
+    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' ORDER BY category_id DESC LIMIT 500");
     $rows = array();
     while($row = mysqli_fetch_assoc($db)) {
-    $category_main[] = $row;
+    $categories[] = $row;
     }
 
-    // GET USER CATEGORIES SUB
-    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Category' ORDER BY category_id DESC LIMIT 500");
-    $rows = array();
-    while($row = mysqli_fetch_assoc($db)) {
-    $category_sub[] = $row;
-    }
+    // // GET USER CATEGORIES MAIN
+    // $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Main_Category' ORDER BY category_id DESC LIMIT 500");
+    // $rows = array();
+    // while($row = mysqli_fetch_assoc($db)) {
+    // $category_main[] = $row;
+    // }
 
-    // GET USER CATEGORIES SUB SUB
-    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Sub_Category' ORDER BY category_id DESC LIMIT 500");
-    $rows = array();
-    while($row = mysqli_fetch_assoc($db)) {
-    $category_sub_sub[] = $row;
+    // // GET USER CATEGORIES SUB
+    // $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Category' ORDER BY category_id DESC LIMIT 500");
+    // $rows = array();
+    // while($row = mysqli_fetch_assoc($db)) {
+    // $category_sub[] = $row;
+    // }
 
-    }
+    // // GET USER CATEGORIES SUB SUB
+    // $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Sub_Category' ORDER BY category_id DESC LIMIT 500");
+    // $rows = array();
+    // while($row = mysqli_fetch_assoc($db)) {
+    // $category_sub_sub[] = $row;
+    // }
 
     // print_r($category_sub_sub);
     // die;
@@ -197,11 +211,8 @@ $router->post('account/products/update', function() {
     $query = "UPDATE `products` SET
     `product_sku` = '".$_REQUEST['product_sku']."',
     `product_store_id` = '".$_REQUEST['product_store_id']."',
-    `product_warehouse_id` = '".$_REQUEST['product_warehouse_id']."',
     `product_user_id` = '".$_REQUEST['user_id']."',
     `product_cat_main_id` = '".$_REQUEST['category_main']."',
-    `product_cat_sub_id` = '".$_REQUEST['category_sub']."',
-    `product_cat_sub_sub_id` = '".$_REQUEST['category_sub_sub']."',
     `product_name` = '".$_REQUEST['product_name']."',
     `product_desc` = '".$_REQUEST['product_desc']."',
     `product_features` = '".$_REQUEST['product_features']."',
@@ -213,8 +224,13 @@ $router->post('account/products/update', function() {
     WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";
     ";
 
+    // `product_cat_sub_id` = '".$_REQUEST['category_sub']."',
+    // `product_cat_sub_sub_id` = '".$_REQUEST['category_sub_sub']."',
+    // `product_warehouse_id` = '".$_REQUEST['product_warehouse_id']."',
+
+
     if ($mysqli->query($query) === TRUE)
-    { header("Location: ".root."account/products/");
+    { header("Location: ".root."account/products/#success");
     } else { echo "Error updating record: " . $mysqli->error; }
 
 });
@@ -222,14 +238,14 @@ $router->post('account/products/update', function() {
 // ============================================= PRODUCT UPDATE
 $router->post('account/products/upload', function() {
     // if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
-    include "db.php";
+    include "app/vendor/db.php";
 
     $queries = array();
     parse_str($_SERVER['QUERY_STRING'], $queries);
     // print_r($queries['source']);
     // die;
 
-    $DIR = "storage/products/";
+    $DIR = "public/storage/products/";
     $allowedfileExtensions = array('jpeg','jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc','pdf');
 
     // $count = count($_FILES['file']['name']);
@@ -360,11 +376,16 @@ $router->get('account/categories', function() {
     $xcrud->pass_default('category_user_id',$_SESSION['user_id']);   // pass default value of user account
 
     $xcrud->order_by('category_id','desc');
-    $xcrud->columns('category_img,category_id,category_name,category_parent_id,category_type');
+    $xcrud->columns('category_img,category_name,category_parent_id');
+
     $xcrud->relation('category_parent_id','categories','category_id','category_name','category_user_id = '.$_SESSION['user_id'].'');
 
+    $xcrud->fields('category_img,category_name,category_parent_id,category_status,category_user_id');
+
+    $xcrud->label('category_parent_id','Parent Name');
+
     $xcrud->column_class('category_img', 'zoom_img');
-    $xcrud->change_type('category_img', 'image', false, array('path' => '../storage/categories/',
+    $xcrud->change_type('category_img', 'image', false, array('path' => '../public/storage/categories/',
 
     'thumbs'=>array(
     array('width'=> 50, 'marker'=>'_s', 'folder' => 'thumbs'),
@@ -387,7 +408,7 @@ $router->get('account/categories', function() {
 // PROUCTS
 $router->post('product/delete_image', function() {
 
-    include "db.php";
+    include "app/vendor/db.php";
     $query =  $mysqli->query("DELETE FROM `products_images` WHERE `image_id` = '".$_POST['product_image_id']."';");
     echo "deleted".$_POST['product_image_id'];
 

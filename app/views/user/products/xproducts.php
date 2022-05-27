@@ -76,8 +76,8 @@
     var hash = window.location.hash.substr(1);
     // console.log(hash);
     if (hash == "success") {
-        vt.success("Your prouduct has been added successfully",{
-        title:"Product added successfully",
+        vt.success("Product items updated successfully",{
+        title:"Items updated",
         position: "bottom-center",
         callback: function (){ //
         } })
