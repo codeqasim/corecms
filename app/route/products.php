@@ -59,6 +59,8 @@ $router->get('account/products', function() {
 // ============================================= ADD PRODUCT
 $router->get('account/products/add', function() {
 
+    file_put_contents("post.log", print_r($_POST, true));
+
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
     include "app/vendor/db.php";
 
@@ -239,11 +241,13 @@ $router->post('account/products/update', function() {
 
 // ============================================= PRODUCT UPDATE
 $router->post('account/products/upload', function() {
+
     // if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
     include "app/vendor/db.php";
 
     $queries = array();
     parse_str($_SERVER['QUERY_STRING'], $queries);
+
     // print_r($queries['source']);
     // die;
 
@@ -286,10 +290,7 @@ $router->post('account/products/upload', function() {
         $sql = "INSERT INTO `products_images` (`image_id`, `image_name`,`image_product_id`, `image_created_at`) VALUES (NULL, '$img', '".$queries['source']."','$date');";
 
         // MYSQL UPDATE QUERY
-        $query = "UPDATE `products` SET
-        `product_img` = '".$img."'
-        WHERE `products`.`product_id` = ".$queries['source'].";
-        ";
+        $query = "UPDATE `products` SET `product_img` = '".$img."' WHERE `products`.`product_id` = '".$queries['source']."';";
 
         if ($mysqli->query($query) === TRUE) {
         } else { echo "Error updating record: " . $mysqli->error; }
