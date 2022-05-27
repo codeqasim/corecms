@@ -204,11 +204,14 @@ $router->get('account/products/add', function() {
 
 // ============================================= PRODUCT UPDATE
 $router->post('account/products/update', function() {
+
+    // AUTH CHECK
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
+
     include "app/vendor/db.php";
 
-    print_r($_POST);
-    die;
+    // print_r($_POST);
+    // die;
 
     if (isset($_POST['product_status']) == true ) { $product_status = 1; } else { $product_status = 0; }
 
@@ -228,7 +231,7 @@ $router->post('account/products/update', function() {
     `product_status` = '".$product_status."',
     `product_stock_id` = '0',
     `product_city_id` = '',
-    `product_created_at` = '".$date."'
+    `product_created_at` = '".$date."',
     `product_updated_at` = '".$date."'
     WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";
     ";
@@ -236,6 +239,7 @@ $router->post('account/products/update', function() {
     // `product_cat_sub_id` = '".$_REQUEST['category_sub']."',
     // `product_cat_sub_sub_id` = '".$_REQUEST['category_sub_sub']."',
     // `product_warehouse_id` = '".$_REQUEST['product_warehouse_id']."',
+
 
 
     if ($mysqli->query($query) === TRUE)
