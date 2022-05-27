@@ -67,6 +67,9 @@ $router->get('account/products/add', function() {
 
     $product_id = $product->product_id;
 
+    echo "work";
+    die;
+    
     // GET USER CATEGORIES MAIN
     $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' ORDER BY category_id DESC LIMIT 500");
     $rows = array();
