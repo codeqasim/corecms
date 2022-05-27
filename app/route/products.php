@@ -207,6 +207,9 @@ $router->post('account/products/update', function() {
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
     include "app/vendor/db.php";
 
+    print_r($_POST);
+    die;
+
     if (isset($_POST['product_status']) == true ) { $product_status = 1; } else { $product_status = 0; }
 
     $date = date("yy:m:d:h:i");
