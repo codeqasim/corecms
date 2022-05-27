@@ -303,16 +303,11 @@ $router->post('account/products/upload', function() {
             echo "Error: " . $sql . "<br>" . $mysqli->error;
         }
 
-        echo "done";
-        die;
-
         } else {
         echo  'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
         }
 
         $db->close();
-
-
 
     }
 
