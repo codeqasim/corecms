@@ -70,8 +70,6 @@ $router->get('account/products/add', function() {
 
     $product_id = $product->product_id;
 
-
-
     // GET USER CATEGORIES MAIN
     $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' ORDER BY category_id DESC LIMIT 500");
     $rows = array();
@@ -211,6 +209,8 @@ $router->post('account/products/update', function() {
 
     if (isset($_POST['product_status']) == true ) { $product_status = 1; } else { $product_status = 0; }
 
+    $date = date("yy:m:d:h:i");
+
     // MYSQL UPDATE QUERY
     $query = "UPDATE `products` SET
     `product_sku` = '".$_REQUEST['product_sku']."',
@@ -224,7 +224,9 @@ $router->post('account/products/update', function() {
     `product_approval` = '0',
     `product_status` = '".$product_status."',
     `product_stock_id` = '0',
-    `product_city_id` = ''
+    `product_city_id` = '',
+    `product_created_at` = '".$date."'
+    `product_updated_at` = '".$date."'
     WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";
     ";
 
