@@ -235,11 +235,7 @@ $router->post('account/products/update', function() {
     `product_desc` = '".$_REQUEST['product_desc']."',
     `product_features` = '".$_REQUEST['product_features']."',
     `product_brand_id` = '".$_REQUEST['product_brand_id']."',
-    `product_approval` = '0',
-    `product_status` = '".$product_status."',
-    `product_stock_id` = '0',
-    `product_city_id` = '',
-    `product_created_at` = '".$date."',
+
     `product_name` = '".$_REQUEST['product_name']."'
     WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";";
 
