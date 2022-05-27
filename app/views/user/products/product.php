@@ -204,7 +204,7 @@
 
             foreach($stores as $store) {
             echo "<option value=".$store['store_id'];
-             if ($product->product_store_id == $store['store_id']) { echo '" selected'; }
+             if ($product->product_store_id == $store['store_id']) { echo ' selected'; }
             echo  ">".$store['store_name']."</option>";
             }
 
@@ -231,7 +231,7 @@
 
             foreach($product_brands as $brand) {
             echo "<option value=".$brand['brand_id'];
-             if ($product->product_brand_id == $brand['brand_id']) { echo '" selected'; }
+             if ($product->product_brand_id == $brand['brand_id']) { echo ' selected'; }
             echo  ">".$brand['brand_name']."</option>";
             }
 
