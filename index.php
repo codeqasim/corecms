@@ -10,8 +10,6 @@ define('appname', 'ODEREO');
 // SESSION STARTED
 session_start();
 
-error_reporting(E_ERROR | E_PARSE);
-
 // INCLUDE VENDORS
 include "vendor/autoload.php";
 include "app/vendor/router.php";
