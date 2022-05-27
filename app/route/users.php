@@ -93,7 +93,7 @@ $router->post('forget-password(.*)', function() {
         ];
         mailer($mail);
 
-        header("Location: ".root."forget-password/#success"); // $new_password variable
+        header("Location: ".root."#password_reset"); // $new_password variable
     } else {
         header("Location: ".root."forget-password/#invalid");
     }

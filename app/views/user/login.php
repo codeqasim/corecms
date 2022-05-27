@@ -76,6 +76,15 @@
     callback: function (){ //
     } })
 
+    var hash = window.location.hash.substr(1);
+
+    if (hash == "password_reset") {
+    vt.success("Please check your email for new password",{
+    title:"Password Reset Successfully",
+    position: "bottom-center",
+    callback: function (){ //
+    } })
+
     <?php } ?>
 
 </script>
