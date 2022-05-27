@@ -64,9 +64,6 @@ $router->get('account/products/add', function() {
 
     $query =  $mysqli->query("INSERT INTO `products` (`product_id`,`product_name`,`product_user_id`) VALUES ( NULL , '', '".$_SESSION['user_id']."' );");
 
-    echo "work";
-    die;
-    
     $product =  $mysqli->query("SELECT * FROM `products` WHERE `product_user_id` = '".$_SESSION['user_id']."' ORDER BY product_id DESC LIMIT 1")->fetch_object();
 
     $product_id = $product->product_id;
