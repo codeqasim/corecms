@@ -2,6 +2,8 @@
 
 // CORECMS v1.0
 
+include "vendor/autoload.php";
+
 use AppRouter\Router;
 use Mailgun\Mailgun;
 
@@ -11,7 +13,7 @@ define('appname', 'ODEREO');
 session_start();
 
 // INCLUDE VENDORS
-include "vendor/autoload.php";
+
 include "app/vendor/router.php";
 include "app/route/users.php";
 include "app/route/settings.php";
@@ -35,49 +37,19 @@ function dd($d) { echo "<pre>"; print_r($d); echo "</pre>"; die(); }
 
 $router->get('mail', function() {
 
- mail("compoxition@gmail.com","My subject","hey man how are you doing!");
+    include "app/vendor/mail.php";
+    $mg->messages()->send($SENDER_DOMAIN, [
+        'from'    => 'ecomistan <postmaster@ecomistan.com>',
+        'to'      => 'qasim <compoxition@gmail.com>',
+        'subject' => 'Hello',
+        'template'    => 'signup',
+        'h:X-Mailgun-Variables'    => '{"link": "link"}'
+    ]);
 
+    dd($mg);
+    die;
 
-    // $curl = curl_init();
-
-    // $params = array(
-    //     'from' => 'postmaster@{{mydomain}}',
-    //     'to' => 'compoxition@gmail.com',
-    //     'subject' => 'hey man');
-
-    // curl_setopt_array($curl, array(
-    //   CURLOPT_URL => 'https://api.mailgun.net/phptravels.com/messages',
-    //   CURLOPT_RETURNTRANSFER => true,
-    //   CURLOPT_ENCODING => '',
-    //   CURLOPT_MAXREDIRS => 10,
-    //   CURLOPT_TIMEOUT => 0,
-    //   CURLOPT_FOLLOWLOCATION => true,
-    //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    //   CURLOPT_CUSTOMREQUEST => 'POST',
-    //   CURLOPT_POSTFIELDS => $params,
-    //   CURLOPT_HTTPHEADER => array(
-    //     'Authorization: Basic {{token}}'
-    //   ),
-    // ));
-
-    // $response = curl_exec($curl);
-
-    // curl_close($curl);
-    // echo $response;
-
-    // ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // $to = 'compoxition@gmail.com';
-    // $subject = 'Marriage Proposal';
-    // $message = 'Hi Jane, will you marry me?';
-    // $from = 'info@odereo.com';
-
-    // // Sending email
-    // if(mail($to, $subject, $message)){
-    //     echo 'Your mail has been sent successfully.';
-    // } else{
-    //     echo 'Unable to send email. Please try again.';
-    // }
+    //  mail("compoxition@gmail.com","My subject","hey man how are you doing!");
 
 });
 

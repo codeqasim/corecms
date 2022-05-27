@@ -49,9 +49,44 @@ $router->get('signup(.*)', function() {
 
     // AUTH CHECK
     if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
+
     views('Signup',
     '',
     'user/signup');
+});
+
+$router->get('forget-password(.*)', function() {
+
+    // AUTH CHECK
+    if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
+
+    views('Forget Password',
+    '',
+    'user/forget_password');
+
+
+});
+
+$router->post('forget-password(.*)', function() {
+
+    // AUTH CHECK
+    // if (isset($_SESSION['user_login']) == true) { header('Location: '.root.'dashboard'); };
+
+    require_once "app/vendor/db.php";
+    $user_info = $mysqli->query('SELECT * FROM accounts WHERE email = "'.$_POST['email'].'"')->fetch_object();
+
+    // IF USER EXIST
+    if (isset($user_info->email) ) {
+
+        $new_password = rand(100000, 999999);
+        $query = "UPDATE `accounts` SET `password` = '".md5($new_password)."' WHERE `accounts`.`email` = '".$_POST['email']."';";
+        $result = mysqli_query($mysqli, $query);
+
+        header("Location: ".root."forget-password/#success"); // $new_password variable
+    } else {
+        header("Location: ".root."forget-password/#invalid");
+    }
+
 });
 
 // ======================== USER LOGIN

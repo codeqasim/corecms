@@ -8,11 +8,9 @@
 </h2>
 <form onSubmit="loading();" autocomplete="off" class="box" method="post" action="<?=root?>forget-password">
 
-<p><strong>Forget Password</strong></p>
-
-<label class="filled w100"> 
-    <input required type="number" name="mobile" placeholder=" " value="<?php if ($dev == 1){ echo "03311442244"; } ?>"> 
-    <span>Mobile Number</span> 
+<label class="control">
+<span>Email Address</span>
+    <input required type="email" name="email" placeholder="Email Address" value="<?php if ($dev == 1){ echo "compoxition@gmail.com"; } ?>">
 </label>
 
 <div class="row mb-1">
@@ -21,43 +19,46 @@
 </div>
 </div>
 
-<progress id="loading" class="linear mt-1"></progress>
+<p>To reset your password please enter your email address and click on reset password</p>
 
-<p>To reset your password please enter your mobile number and click on reset password</p>
+<progress id="loading" class="linear mt-1"></progress>
 
 </form>
 </div>
 
 </div>
 
-<?php $url = explode('/', $_GET['url']); ?>
-
 <script>
-    <?php 
-    if (end($url) == "invalid") { ?>
-    vt.error("Please enter correct mobile number",{ 
-    title:"Invalid Mobile Number", 
-    position: "top-center", 
-    callback: function (){ // 
-    } })
 
-    <?php } ?>
+var hash = window.location.hash.substr(1);
 
-    <?php 
-    if (end($url) == "success") { ?>
-    vt.success("Please check your email for new password",{ 
-    title:"Password Reset Successfully", 
-    position: "top-center", 
-    callback: function (){ // 
-    } })
+    // console.log(hash);
+    if (hash == "invalid") {
+    vt.error("Please enter correct email address",{
+    title:"Invalid Email Address",
+    position: "bottom-center",
+    callback: function (){ //
+        } })
+    }
+
+    if (hash == "success") {
+    vt.success("Please check your email for new password",{
+    title:"Password Reset Successfully",
+    position: "bottom-center",
+    callback: function (){ //
+        } })
 
     $('.hide_button').prop('disabled', true);
-
-    <?php } ?>
+    }
 
 </script>
 
 <style>
     form p { color: #000 !important; font-size: 1rem !important; }
     .pages_links, footer { display: none; }
+</style>
+
+<style>
+    header,footer,.pages_links{display:none !important}
+    body{padding:0px}
 </style>
