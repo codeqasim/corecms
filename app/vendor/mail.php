@@ -7,4 +7,3 @@ use Mailgun\Mailgun;
 
     // First, instantiate the SDK with your API credentials
     $mg = Mailgun::create("key-528ca6d92f9006dea5fdb43e68464ee8");
-

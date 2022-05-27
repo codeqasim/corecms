@@ -82,6 +82,15 @@ $router->post('forget-password(.*)', function() {
         $query = "UPDATE `accounts` SET `password` = '".md5($new_password)."' WHERE `accounts`.`email` = '".$_POST['email']."';";
         $result = mysqli_query($mysqli, $query);
 
+        // SEND MAIL
+        $mail = [
+            'name'=>$user_info->first_name,
+            'email'=>$_POST['email'],
+            'subject'=>'Hello'.$user_info->first_name,
+            'link'=> $new_password
+        ];
+        mailer($mail);
+
         header("Location: ".root."forget-password/#success"); // $new_password variable
     } else {
         header("Location: ".root."forget-password/#invalid");
