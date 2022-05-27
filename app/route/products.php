@@ -297,6 +297,9 @@ $router->post('account/products/upload', function() {
         if ($mysqli->query($query) === TRUE) {
         } else { echo "Error updating record: " . $mysqli->error; }
 
+        echo "done";
+        die;
+        
         if ($mysqli->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
@@ -309,8 +312,7 @@ $router->post('account/products/upload', function() {
 
         $db->close();
 
-        echo "done";
-        die;
+
 
     }
 
