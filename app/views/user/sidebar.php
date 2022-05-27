@@ -2,9 +2,9 @@
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
 
-if ($url[2] == "account") {
-    echo "<style>header .container{min-width:100%}</style>";
-}
+// if ($url[2] == "account") {
+   // echo "<style>header .container{min-width:100%}</style>";
+// }
 
 ?>
 
