@@ -292,9 +292,8 @@ $router->post('account/products/upload', function() {
         // MYSQL UPDATE QUERY
         $query = "UPDATE `products` SET `product_img` = '".$img."' WHERE `products`.`product_id` = '".$queries['source']."';";
 
-        echo "done";
-        die;
-        
+
+
         if ($mysqli->query($query) === TRUE) {
         } else { echo "Error updating record: " . $mysqli->error; }
 
@@ -308,7 +307,10 @@ $router->post('account/products/upload', function() {
         echo  'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
         }
 
-        // $db->close();
+        $db->close();
+
+        echo "done";
+        die;
 
     }
 
