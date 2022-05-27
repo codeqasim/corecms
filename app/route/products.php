@@ -234,7 +234,10 @@ $router->post('account/products/update', function() {
     `product_cat_main_id` = '".$_REQUEST['category_main']."',
     `product_desc` = '".$_REQUEST['product_desc']."',
     `product_brand_id` = '".$_REQUEST['product_brand_id']."',
-    `product_features` = '".$_REQUEST['product_features']."'
+    `product_features` = '".$_REQUEST['product_features']."',
+    `product_status` = '".$product_status."',
+    `product_created_at` = '".$date."',
+    `product_updated_at` = '".$date."'
     WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";";
 
     // $query = "UPDATE `products` SET
