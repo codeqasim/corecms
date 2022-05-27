@@ -307,7 +307,7 @@ $router->post('account/products/upload', function() {
         echo  'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
         }
 
-        $db->close();
+        // $db->close();
 
     }
 
