@@ -75,26 +75,25 @@ $router->get('account/products/add', function() {
     }
 
     // GET USER CATEGORIES MAIN
-    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Main_Category' ORDER BY category_id DESC LIMIT 500");
-    $rows = array();
-    while($row = mysqli_fetch_assoc($db)) {
-    $category_main[] = $row;
-    }
+    // $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Main_Category' ORDER BY category_id DESC LIMIT 500");
+    // $rows = array();
+    // while($row = mysqli_fetch_assoc($db)) {
+    // $category_main[] = $row;
+    // }
 
-    // GET USER CATEGORIES SUB
-    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Category' ORDER BY category_id DESC LIMIT 500");
-    $rows = array();
-    while($row = mysqli_fetch_assoc($db)) {
-    $category_sub[] = $row;
-    }
+    // // GET USER CATEGORIES SUB
+    // $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Category' ORDER BY category_id DESC LIMIT 500");
+    // $rows = array();
+    // while($row = mysqli_fetch_assoc($db)) {
+    // $category_sub[] = $row;
+    // }
 
-    // GET USER CATEGORIES SUB SUB
-    $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Sub_Category' ORDER BY category_id DESC LIMIT 500");
-    $rows = array();
-    while($row = mysqli_fetch_assoc($db)) {
-    $category_sub_sub[] = $row;
-
-    }
+    // // GET USER CATEGORIES SUB SUB
+    // $db = mysqli_query($mysqli, "SELECT * FROM `categories` WHERE `category_user_id` = '".$_SESSION['user_id']."' AND `category_type` = 'Sub_Sub_Category' ORDER BY category_id DESC LIMIT 500");
+    // $rows = array();
+    // while($row = mysqli_fetch_assoc($db)) {
+    // $category_sub_sub[] = $row;
+    // }
 
     // print_r($category_sub_sub);
     // die;
