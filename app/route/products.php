@@ -238,7 +238,6 @@ $router->post('account/products/update', function() {
 
     `product_approval` = '0',
     `product_stock_id` = '0',
-    `product_city_id` = '',
 
     `product_name` = '".$_REQUEST['product_name']."'
     WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";";
