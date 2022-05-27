@@ -22,6 +22,7 @@ $router->get('account/products', function() {
 
     $xcrud->relation('product_store_id','stores','store_id','store_name');
     $xcrud->relation('product_brand_id','brands','brand_id','brand_name');
+    $xcrud->relation('product_cat_main_id','categories','category_id','categoy_name');
 
     $xcrud->order_by('product_id','desc');
     $xcrud->unset_view();
@@ -42,11 +43,18 @@ $router->get('account/products', function() {
 
     ));
 
-    $xcrud->columns('product_status,product_img,product_name,product_store_id,product_brand_id,product_stock_id,product_sku,product_approval');
+    $xcrud->columns('product_status,product_img,product_name,product_store_id,product_brand_id,product_stock_id,product_sku');
 
-    $xcrud->label('product_status','status')->label('product_img','Image')->label('product_stock_id','Stock')->label('product_store_id','Store')->label('product_brand_id','Brand')->label('product_sku','SKU')->label('product_approval','Appoval');
+    $xcrud->label('product_status','Status')->label('product_img','Image')->label('product_stock_id','Stock')->label('product_store_id','Store')->label('product_brand_id','Brand')->label('product_sku','SKU')->label('product_approval','Appoval');
 
     $xcrud->button(root.'account/products/{product_id}','Edit Product','icon-pencil-2','',array('target'=>'_self'));
+    $xcrud->column_pattern('product_name','<a href="products/{product_id}"><strong>{product_name}</strong></a> ');
+
+    $xcrud->column_pattern('product_status',' ');
+
+    $xcrud->highlight('product_status', '<', '1', '#ffa9a9');
+    $xcrud->highlight('product_status', '>', '0', '#b2ffb2');
+    $xcrud->column_width('product_status','1%');
 
     $view = "app/views/user/products/xproducts.php";
     $xcrud->unset_title();
@@ -218,23 +226,25 @@ $router->post('account/products/update', function() {
     $date = date("yy:m:d:h:i");
 
     // MYSQL UPDATE QUERY
-    $query = "UPDATE `products` SET
-    `product_sku` = '".$_REQUEST['product_sku']."',
-    `product_store_id` = '".$_REQUEST['product_store_id']."',
-    `product_user_id` = '".$_REQUEST['user_id']."',
-    `product_cat_main_id` = '".$_REQUEST['category_main']."',
-    `product_name` = '".$_REQUEST['product_name']."',
-    `product_desc` = '".$_REQUEST['product_desc']."',
-    `product_features` = '".$_REQUEST['product_features']."',
-    `product_brand_id` = '".$_REQUEST['product_brand_id']."',
-    `product_approval` = '0',
-    `product_status` = '".$product_status."',
-    `product_stock_id` = '0',
-    `product_city_id` = '',
-    `product_created_at` = '".$date."',
-    `product_updated_at` = '".$date."'
-    WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";
-    ";
+    $query = "UPDATE `products` SET `product_sku` = 'sku' WHERE `products`.`product_id` = 7;";
+
+    // $query = "UPDATE `products` SET
+    // `product_sku` = '".$_REQUEST['product_sku']."',
+    // `product_store_id` = '".$_REQUEST['product_store_id']."',
+    // `product_user_id` = '".$_REQUEST['user_id']."',
+    // `product_cat_main_id` = '".$_REQUEST['category_main']."',
+    // `product_name` = '".$_REQUEST['product_name']."',
+    // `product_desc` = '".$_REQUEST['product_desc']."',
+    // `product_features` = '".$_REQUEST['product_features']."',
+    // `product_brand_id` = '".$_REQUEST['product_brand_id']."',
+    // `product_approval` = '0',
+    // `product_status` = '".$product_status."',
+    // `product_stock_id` = '0',
+    // `product_city_id` = '',
+    // `product_created_at` = '".$date."',
+    // `product_updated_at` = '".$date."'
+    // WHERE `products`.`product_id` = ".$_REQUEST['product_id'].";
+    // ";
 
     // `product_cat_sub_id` = '".$_REQUEST['category_sub']."',
     // `product_cat_sub_sub_id` = '".$_REQUEST['category_sub_sub']."',
@@ -389,11 +399,13 @@ $router->get('account/categories', function() {
     $xcrud->pass_default('category_user_id',$_SESSION['user_id']);   // pass default value of user account
 
     $xcrud->order_by('category_id','desc');
-    $xcrud->columns('category_img,category_name,category_parent_id');
+    // $xcrud->columns('category_img,category_name,category_parent_id'); // use this to show parent id
+    $xcrud->columns('category_img,category_name');
+
 
     $xcrud->relation('category_parent_id','categories','category_id','category_name','category_user_id = '.$_SESSION['user_id'].'');
 
-    $xcrud->fields('category_img,category_name,category_parent_id,category_status,category_user_id');
+    $xcrud->fields('category_img,category_name,category_status,category_user_id');
 
     $xcrud->label('category_parent_id','Parent Name');
 
