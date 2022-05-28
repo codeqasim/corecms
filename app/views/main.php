@@ -252,7 +252,7 @@ if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){ $dev = 0; } else { $dev = 0; 
 <script>
 
     // Sidebar
-    $('.sidebar a,.fadeout,header a').click(function(){
+    $('.sidebar a,.fadeout,header a,.fadeout').click(function(){
       $('body').fadeOut(150);
         setTimeout(function() {
            $('body').fadeIn(150);

@@ -45,10 +45,10 @@ $router->get('account/products', function() {
 
     $xcrud->columns('product_status,product_img,product_name,product_store_id,product_brand_id,product_stock_id,product_sku');
 
-    $xcrud->label('product_status','Status')->label('product_img','Image')->label('product_stock_id','Stock')->label('product_store_id','Store')->label('product_brand_id','Brand')->label('product_sku','SKU')->label('product_approval','Appoval');
+    $xcrud->label('product_status',' ')->label('product_img','Image')->label('product_stock_id','Stock')->label('product_store_id','Store')->label('product_brand_id','Brand')->label('product_sku','SKU')->label('product_approval','Appoval');
 
     $xcrud->button(root.'account/products/{product_id}','Edit Product','icon-pencil-2','',array('target'=>'_self'));
-    $xcrud->column_pattern('product_name','<a href="{product_id}"><strong>{product_name}</strong></a> ');
+    $xcrud->column_pattern('product_name','<a class="fadeout" href="'.root.'account/products/{product_id}"><strong>{product_name}</strong></a> ');
 
     $xcrud->column_pattern('product_status',' ');
 
@@ -141,6 +141,45 @@ $router->get('account/products/add', function() {
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
     include "app/vendor/db.php";
 
+    $xcrud = Xcrud::get_instance();
+    $xcrud->table('products_inventory');
+
+
+    $xcrud->order_by('inventory_id','desc');
+    $xcrud->unset_view();
+    $xcrud->unset_csv();
+    $xcrud->unset_title();
+
+    $xcrud->relation('inventory_warehouse_id','warehouses','warehouse_id','warehouse_name');
+
+    // $xcrud->where('product_user_id =', $_SESSION['user_id']);       // account id of main client
+
+    $xcrud->where('inventory_product_id =', $product_id);
+    $xcrud->change_type('inventory_product_id','hidden');                // change account type to hidden
+    $xcrud->pass_default('inventory_product_id', $product_id);   // pass default value of user account
+
+    $xcrud->label('inventory_img','image');
+    $xcrud->label('inventory_warehouse_id','Warehouse');
+    $xcrud->label('inventory_color','Color');
+    $xcrud->label('inventory_buying_price','Buying Price');
+    $xcrud->label('inventory_selling_price','Selling Price');
+    $xcrud->label('inventory_stock','Stock');
+    $xcrud->label('inventory_size','size');
+
+    $xcrud->columns('inventory_img,inventory_warehouse_id,inventory_color,inventory_buying_price,inventory_selling_price,inventory_stock,inventory_size');
+    $xcrud->fields('inventory_img,inventory_warehouse_id,inventory_color,inventory_buying_price,inventory_selling_price,inventory_stock,inventory_size,inventory_product_id');
+
+    $xcrud->column_class('inventory_img', 'zoom_img');
+    $xcrud->change_type('inventory_img', 'image', false, array('width' => 1000, 'path' => '../../../public/storage/poducts/inventory/',
+
+    'thumbs'=>array(
+    array('width'=> 50, 'marker'=>'_s', 'folder' => 'thumbs'),
+    array('width'=> 100, 'marker'=>'_m', 'folder' => 'thumbs'),
+    array('width'=> 200, 'marker'=>'_l', 'folder' => 'thumbs'),
+    array('width'=> 400, 'marker'=>'_xl', 'folder' => 'thumbs'),
+    array('width' => 600, 'folder' => 'thumbs'), // using 'thumbs' subfolder
+    )));
+
     $product = $mysqli->query('SELECT * FROM products WHERE product_id = "'.$product_id.'" AND product_user_id = "'.$_SESSION['user_id'].'"')->fetch_object();
 
     $product_images = $mysqli->query('SELECT * FROM products_images WHERE image_product_id = "'.$product_id.'" ');
@@ -217,7 +256,7 @@ $router->post('account/products/update', function() {
     if (isset($_SESSION['user_login']) == false) { header("Location: ".root."login"); }
 
     include "app/vendor/db.php";
-    
+
     // print_r($_POST);
     // die;
 

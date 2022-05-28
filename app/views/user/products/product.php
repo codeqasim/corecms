@@ -315,6 +315,23 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="box w100 mt-1">
+        <h4 class="mt-0">
+	    <span class="df aic gap10"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>  Variants </span>
+        <div class="df gap7" style="min-width:390px">
+        </div>
+        </h4>
+
+        <?php
+        echo $xcrud->render();
+        ?>
+
+        </div>
+
+
+
 </div>
 </div>
 </div>

@@ -57,9 +57,6 @@
     </div>
 </div>
 
-
-
-
 <script>
     <?php
     $url = explode('/', $_GET['url']);
